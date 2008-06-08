@@ -4,8 +4,10 @@
  * Contains major database functions
  */
 
+include("config.php");
+
 //Connect to the mysql database, used everywhere. Don't break me.
-$conn = mysql_connect("localhost", "nat", "nat100") or die(mysql_error());
+$conn = mysql_connect("localhost", $db_user, $db_pass) or die(mysql_error());
 mysql_select_db('Ideaius', $conn) or die(mysql_error());
 
 function clearUsers()

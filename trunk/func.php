@@ -241,14 +241,15 @@ function getTag($id)
 function getTags($pID)
 {
 	global $conn;
-	$q = "SELECT tID FROM t2p WHERE pID = '$pID'";
-	$array = mysql_fetch_row(mysql_query($q,$conn));
+	$q = "SELECT * FROM t2p WHERE pID = '$pID'";
+	$result = mysql_query($q,$conn);
 
 	$str = " ";
 
-	foreach()
+	while($row = mysql_fetch_assoc($result))
 	{
-		$str .= getTag($one);
+		var_dump($row); 
+		$str .= getTag($row['tID']);
 	}
 	
 	return $str;

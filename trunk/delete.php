@@ -4,7 +4,7 @@
  * used to delete ideas 
  */
 session_start();
-include("func.php");
+include("functions/func.php");
 include("login.php");
 
 $id = $_GET['id'];

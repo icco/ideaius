@@ -5,7 +5,7 @@
  */
 //As seen on http://evolt.org/article/comment/17/60265/index.html
 session_start(); 
-include("dbFunc.php");
+include("functions/dbFunc.php");
 
 /**
  * Returns true if the username has been taken

@@ -6,7 +6,7 @@
  */
 
 session_start();
-include("func.php");
+include("functions/func.php");
 
 $user = $_GET['u'];
 global $conn;

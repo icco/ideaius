@@ -3,7 +3,7 @@
  * logout.php
  */
 session_start(); 
-include("dbFunc.php");
+include("functions/dbFunc.php");
 include("login.php");
 
 /**

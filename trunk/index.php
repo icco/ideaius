@@ -4,7 +4,7 @@
  * it's the god damned index
  */
 session_start(); 
-include("func.php");
+include("functions/func.php");
 include("login.php");
 $rev = "??";
 print pgTop("Home");

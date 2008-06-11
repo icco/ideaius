@@ -14,7 +14,7 @@ if($ideanum == 0)
 else
 {
 	session_start(); 
-	include("func.php");
+	include("functions/func.php");
 	include("login.php");
 	print pgTop("Idea #" . $ideanum);
 	global $conn;

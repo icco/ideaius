@@ -1,7 +1,7 @@
 <pre>
 <?php
 include("login.php");
-include("dbFunc.php");
+include("functions/dbFunc.php");
 if($_GET['y'] == 1)
 {
 	clearUsers();

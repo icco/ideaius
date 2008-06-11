@@ -2,7 +2,7 @@
 /*
  * About.php
  */
-include("func.php");
+include("functions/func.php");
 
 echo pgTop("About");
 ?>

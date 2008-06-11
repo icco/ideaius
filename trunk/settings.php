@@ -4,7 +4,7 @@
  * edit user settings
  */
 session_start(); 
-include("func.php");
+include("functions/func.php");
 include("login.php");
 print pgTop("Edit Your Settings");
 if(!checkLogin())

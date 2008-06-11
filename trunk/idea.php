@@ -23,7 +23,7 @@ else
 	$data = mysql_fetch_assoc($result);
 	if($postTags != NULL)
 	{
-		parseTags($postTags);
+		parseTags($postTags, $ideanum);
 	}
 ?>
 
@@ -33,8 +33,8 @@ else
 		<p>Idea #<?php echo $ideanum; ?></p>
 		<p><?php echo $data['content']; ?></p>
 		<p>By <?php echo getUserLink($data['user']); ?> on <?php echo $data['time']; ?></p>
-		<p>Tags: <?php getTags($ideanum); ?> <form action="<? echo $HTTP_SERVER_VARS['PHP_SELF']; ?>" method="post">
-		<input type="text" name="rname" maxlength="30"><input type="submit" name="subjoin" value="Add">
+		<p>Tags: <?php print getTags($ideanum); ?> <form action="<? echo "idea.php?id=" . $ideanum; ?>" method="post">
+		<input type="text" name="tags" maxlength="30"><input type="submit">
 		</form></p>
 
 <?php }	else {

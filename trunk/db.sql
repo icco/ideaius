@@ -78,4 +78,3 @@ CREATE TABLE `wiki` (
   PRIMARY KEY  (`ID`)
 ) ENGINE=MyISAM;
 
--- Dump completed on 2008-04-08 23:05:56

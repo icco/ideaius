@@ -1,28 +1,18 @@
 <?php
-include("dbFunc.php");
-include("tagsFunc.php");
-include("classTextile.php");
 /**
  * func.php
  * does a lot of stuff
- *
- * At some point I want to split this up into a few files (tagfuncs, ideafuncs, etc...)
- *
- * addIdea - Inserts an idea
- * cleanInput - takes a post and makes it safe
- * ideaBox - for submitting ideas
- * getUserID - give users name return ID
- * getUser - give ID return user name
- * newWiki - given postid, userid, content, save into db 
- * postsByUser - returns an array of posts for a user
- * getPostPage - return the html for the content of a post(wiki and all)
- * wikiFormat - parses wiki stuff returns html string
- * getWiki - 
- * frontPG - 
- * age - returns an age based on a birthdate
- * loginError - 
  */
 
+include("dbFunc.php");
+include("tagsFunc.php");
+include("classTextile.php");
+include("wikiFunc.php");
+
+/**
+ * Basically the header function. No idea why I named it strangly.
+ * returns a string which needs to be printed.
+ */
 function pgTop($title)
 {
 	$data = "<html>\n<head>\n<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\">\n";
@@ -37,6 +27,11 @@ function pgTop($title)
 	return $data;
 }
 
+/**
+ * a string to print at the bottom. 
+ * right now only javascript crap. 
+ * TODO: get rid of relative links.
+ */
 function footer()
 {
 		
@@ -46,6 +41,9 @@ function footer()
 
 }
 
+/**
+ * adds an idea by user to the db
+ */
 function addIdea($idea,$user)
 {
 	//Incoming Idea will  be cleaned...
@@ -59,12 +57,18 @@ function addIdea($idea,$user)
 		
 }
 
+/**
+ * does a very simple input cleaning.
+ */
 function cleanInput($in)
 {
 	$out = htmlspecialchars(filter_var($in));
 	return $out;
 }
 
+/**
+ * the initial box on the front page for submitting an idea
+ */
 function ideaBox()
 {
 
@@ -86,6 +90,9 @@ function ideaBox()
 	}
 }
 
+/**
+ * given a username returns their ID
+ */
 function getUserID($user)
 {
 	global $conn;
@@ -94,6 +101,9 @@ function getUserID($user)
 	return intval($ret[0]);
 }
 
+/**
+ * given a users ID returns their user name
+ */
 function getUser($id)
 {
 	global $conn;
@@ -102,6 +112,9 @@ function getUser($id)
 	return $ret[0];
 }
 
+/**
+ * returns a string which is a link to the users page
+ */
 function getUserLink($id)
 {
 	global $conn;
@@ -111,14 +124,10 @@ function getUserLink($id)
 	return $string;
 }
 
-function newWiki($pid,$uid,$cont)
-{
-	global $conn;
-	$q = "INSERT INTO wiki values('','$pid','$cont',NOW(),'$uid')";
-	$result = mysql_query($q,$conn);
-
-}
-
+/**
+ * returns all posts by a given user. 
+ * TODO: make so it can be sent either an ID or username.
+ */
 function postsByUser($user)
 {
 	global $conn;
@@ -137,45 +146,9 @@ function postsByUser($user)
 	return $str;
 }
 
-function wikiFormat($in)
-{
-	$textile = new Textile();
-	return $textile->TextileThis($in);
-}
-
-function getWiki($pID)
-{
-	//Note that data is stored raw and we convert to html here. 
-	//Not sure if this is smart or not
-	global $conn;
-	$q = "SELECT * FROM wiki WHERE pID = '$pID' ORDER BY ID DESC LIMIT 1";
-	$result = mysql_query($q,$conn);
-	//var_dump($result);
-	$ret = mysql_fetch_assoc($result);
-	if($ret != NULL)
-	{
-		$temp = "<div class=\"wiki\">\n";
-		$temp .= wikiFormat($ret['content']);
-		$temp .= "\n</div>";
-		$temp .= "\n<p>Last edited by " . getUser($ret['uID']) . " on " . $ret['date'] . "<br />";
-		if(checkLogin())
-		{
-			$temp .= "<a href=\"edit.php?ID=$pID\">Edit</a> this.</p>";
-		}
-		else
-		{
-			$temp .= "You're Not <a href=\"index.php\">Logged In</a>";
-		}
-		return $temp;
-
-	}
-	else
-	{
-		$form = "No Wiki yet. <a href=\"edit.php?ID=$pID\">Add one?</a>";
-		return $form;
-	}
-}
-
+/**
+ * the list of the 10 most recent ideas.
+ */
 function frontPGideas()
 {
 	print "<p class=\"heading\">The ten most recent Ideas:</p>";
@@ -193,6 +166,9 @@ function frontPGideas()
 	}
 }
 
+/**
+ * calculates a users age based on birthday.
+ */
 function age($bday)
 {
 	$diff = time() - $bday;
@@ -200,6 +176,9 @@ function age($bday)
 	return $diff;	
 }
 
+/**
+ * the login error?
+ */
 function loginError()
 {
 	$ret = "<p>You are not logged in.</p>";

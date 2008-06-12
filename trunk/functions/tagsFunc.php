@@ -3,6 +3,11 @@
  * Functions for working with tags
  */
 
+
+/**
+ * given a comma seperated string of tags and a post number
+ * this seperates out the tags and adds them to the associated post
+ */
 function parseTags($in, $pID)
 {
 	$tags = explode(",",$in);
@@ -19,6 +24,9 @@ function parseTags($in, $pID)
 	}
 }
 
+/**
+ * given a tag name returns the associated ID
+ */
 function getTagID($in)
 {
 	global $conn;
@@ -27,6 +35,9 @@ function getTagID($in)
 	return intval($ret[0]);
 }
 
+/**
+ * given an ID returns the tag
+ */
 function getTag($id)
 {
 	global $conn;
@@ -35,6 +46,10 @@ function getTag($id)
 	return $ret[0];
 }
 
+/**
+ * gets tags for the specified post
+ * TODO: Get this to actually work...
+ */
 function getTags($pID)
 {
 	global $conn;
@@ -52,6 +67,10 @@ function getTags($pID)
 	return $str;
 }
 
+/**
+ * adds a tag to the specified post. 
+ * this function is mainly used in association with parse tags.
+ */
 function addTag($pID, $tag)
 {
 	global $conn;

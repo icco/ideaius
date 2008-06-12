@@ -30,6 +30,10 @@ function clearPosts()
 	echo "Posts Table Emptied.\n";
 }
 
+/**
+ * Dumps the contents of the database onto an easily readable page.
+ * Is this up to date?
+ */
 function dumpDB()
 {
 	global $conn;

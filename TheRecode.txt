@@ -1,0 +1,11 @@
+So we (we being me) need to recode the site from mostly scratch.
+
+The main important things
+
+ - Security
+ - Content
+ - Users
+
+Holy Shit. Holy Shit. Holy Shit. That's incredibly generic.
+
+

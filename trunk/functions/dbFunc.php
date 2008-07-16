@@ -31,8 +31,19 @@ function clearPosts()
 }
 
 /**
- * Dumps the contents of the database onto an easily readable page.
- * Is this up to date?
+ * Loads the file db.sql and creates a database with it.
+ * Not sure if I actually need this. If I do then I'll implement it
+ */
+function createDB()
+{
+	
+	
+}
+
+/**
+ * Dumps the contents of the database onto an easily readable page. 
+ * As soon as this has a decent amount of data in it, this will be bad for the server, I think.
+ * TODO: Update to cover all parts of the database. 
  */
 function dumpDB()
 {

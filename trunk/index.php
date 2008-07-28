@@ -16,7 +16,7 @@ print pgTop("Home");
 	echo "<p>Logged in as " . $_SESSION['uname'] . ", <a href=\"logout.php\">logout</a></p>";
 } else { displayLogin(); } ?>
 <?php frontPGideas(); ?>
-<p>You are using revision <?php print $rev; ?> and branch <?php echo basename(getcwd()); ?></p>
+<p>You are in the <?php echo basename(getcwd()); ?>! Huzzah.</p>
 </div>
 <?php echo footer(); ?>
 </body>

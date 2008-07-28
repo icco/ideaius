@@ -6,8 +6,16 @@ The main important things
  - Content
  - Users
 
-Holy Shit. Holy Shit. Holy Shit. That's incredibly generic.
+"Are you thinking what I'm thinking?"
+"Holy Shit. Holy Shit. Holy Shit. There's a swordfish flying at my face?" 
 
  - Security
  	- Linux based? You, Your Group, Everyone else.
+
+ - Use Classes.
+ - A decent design.
+ - Talk to Dan.
+ - Get on web soon.
+
+(Note: Mac laptop need an end key.)
 

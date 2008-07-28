@@ -1,0 +1,37 @@
+# Feature List
+# These at some point need to be sorted into priorities
+
+Tags
+	- Gotta have a tag cloud too! :p
+
+Related Ideas
+	- This is gonna be difficult
+	- Split into two categories?
+	- Maybe 5 random ideas and 5 related ideas?
+
+Categories
+	- Big buckets, 4 or 5 max
+
+Cool Design
+	- logo
+	- Site design
+
+More Detailed User Profiles
+	- User pic
+	- better looking profile pg
+	- friends (co-consirators?)
+
+Login Stuff
+	- Maybe keep current thing
+	- Find out what the deal is with sessions
+
+Privacy Settings
+	- For user account
+	- Per Idea
+
+Copywrite stuff
+	- Hmm... get a lawyer?
+
+jott
+bulbstorm
+

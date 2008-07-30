@@ -150,10 +150,10 @@
 /**
  * A random string used in security hashing methods.
  */
-	Configure::write('Security.salt', 'DYhG93b0qyJfIxfs2guVoUubWwvniR2G0FgaC9mi');
+	Configure::write('Security.salt', 'OMGIT\'CAKEPHP!PraidseTHELORDS.BYAHHHH!1qaz2wsx3edc4rfv5tgb6yhn7ujm8ik9ol0p;/.,');
 /**
  * Compress CSS output by removing comments, whitespace, repeating tags, etc.
- * This requires a/var/cache directory to be writable by the web server for caching.
+ * This requires a /var/cache directory to be writable by the web server for caching.
  * and /vendors/csspp/csspp.php
  *
  * To use, prefix the CSS link URL with '/ccss/' instead of '/css/' or use HtmlHelper::css().

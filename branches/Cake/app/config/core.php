@@ -101,7 +101,7 @@
  * To use database sessions, execute the SQL file found at /app/config/sql/sessions.sql.
  *
  */
-	Configure::write('Session.save', 'php');
+	Configure::write('Session.save', 'database');
 /**
  * The name of the table used to store CakePHP database sessions.
  *
@@ -109,17 +109,17 @@
  *
  * The table name set here should *not* include any table prefix defined elsewhere.
  */
-	//Configure::write('Session.table', 'cake_sessions');
+	Configure::write('Session.table', 'cake_sessions');
 /**
  * The DATABASE_CONFIG::$var to use for database session handling.
  *
  * 'Session.save' must be set to 'database' in order to utilize this constant.
  */
-	//Configure::write('Session.database', 'default');
+	Configure::write('Session.database', 'default');
 /**
  * The name of CakePHP's session cookie.
  */
-	Configure::write('Session.cookie', 'CAKEPHP');
+	Configure::write('Session.cookie', 'Ideaius');
 /**
  * Session time out time (in seconds).
  * Actual value depends on 'Security.level' setting.
@@ -150,7 +150,7 @@
 /**
  * A random string used in security hashing methods.
  */
-	Configure::write('Security.salt', 'OMGIT\'CAKEPHP!PraidseTHELORDS.BYAHHHH!1qaz2wsx3edc4rfv5tgb6yhn7ujm8ik9ol0p;/.,');
+	Configure::write('Security.salt', 'OMGIT\'sCAKEPHP!PraiseTHELORDS.BYAHHHH!1qaz2wsx3edc4rfv5tgb6yhn7ujm8ik9ol0p;/.,');
 /**
  * Compress CSS output by removing comments, whitespace, repeating tags, etc.
  * This requires a /var/cache directory to be writable by the web server for caching.

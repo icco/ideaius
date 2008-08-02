@@ -13,7 +13,7 @@
 <td><?php echo $post['Post']['id']; ?></td>
 <td>
 <?php echo $html->link($post['Post']['title'], 
-		"/view/".$post['Post']['id']); ?>
+		"/posts/view/".$post['Post']['id']); ?>
 </td>
 <td><?php echo $post['Post']['created']; ?></td>
 </tr>

@@ -101,7 +101,7 @@
  * To use database sessions, execute the SQL file found at /app/config/sql/sessions.sql.
  *
  */
-	Configure::write('Session.save', 'php');
+	Configure::write('Session.save', 'database');
 /**
  * The name of the table used to store CakePHP database sessions.
  *
@@ -109,13 +109,13 @@
  *
  * The table name set here should *not* include any table prefix defined elsewhere.
  */
-	//Configure::write('Session.table', 'cake_sessions');
+	Configure::write('Session.table', 'cake_sessions');
 /**
  * The DATABASE_CONFIG::$var to use for database session handling.
  *
  * 'Session.save' must be set to 'database' in order to utilize this constant.
  */
-	//Configure::write('Session.database', 'default');
+	Configure::write('Session.database', 'default');
 /**
  * The name of CakePHP's session cookie.
  */
@@ -153,7 +153,7 @@
 	Configure::write('Security.salt', 'BYAHHHHHH!!!!!!');
 /**
  * Compress CSS output by removing comments, whitespace, repeating tags, etc.
- * This requires a/var/cache directory to be writable by the web server for caching.
+ * This requires a /var/cache directory to be writable by the web server for caching.
  * and /vendors/csspp/csspp.php
  *
  * To use, prefix the CSS link URL with '/ccss/' instead of '/css/' or use HtmlHelper::css().

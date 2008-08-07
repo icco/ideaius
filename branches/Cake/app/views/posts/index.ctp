@@ -22,7 +22,7 @@
 		"/posts/delete/{$post['Post']['id']}", 
 		null, 
 		'Are you sure?'
-		)?>
+		)?> | 
 <?php echo $html->link('Edit', '/posts/edit/'.$post['Post']['id']);?>
 </td>
 <td><?php echo $post['Post']['created']; ?></td>

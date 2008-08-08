@@ -13,17 +13,19 @@
 </head>
 <body>
 
-<!-- If you'd like some sort of menu to 
-show up on all of your views, include it here -->
-<div id="header">
-<div id="menu">...</div>
-</div>
+<div class="cont">
+<div class="nav">
+<div class="nitem"><a href="/">Home</a></div><div class="nitem"><a href="/about/">About</a></div>
+<div class="nitem"><input type="text"></div></div></p></small>
+<h1 class="title"><a href="index.php">Ideaius</a></h1>
+<h3 class="title">Where ideas come to roost.</h3>
+<small><p class="title">by <a href="http://devcloud.org">devCloud</a>
 
 <!-- Here's where I want my views to be displayed -->
 <?php echo $content_for_layout ?>
 
-<!-- Add a footer to each displayed page -->
-<div id="footer">...</div>
+<p>You are in the <?php echo basename(getcwd()); ?>! Huzzah.</p>
+</div>
 
 </body>
 </html>

@@ -1,0 +1,97 @@
+body
+{
+
+
+}
+
+h3.title 
+{
+	padding-top: 0px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+
+h1.title, h1.title a
+{
+	color: black;
+	text-decoration: none;
+	padding-bottom: 4px;
+	margin-bottom: 0px;
+}
+
+p.title
+{
+	margin-top: 1px;
+	margin-bottom: 30px;
+}
+
+p.heading
+{
+	font-weight: 900;
+}
+
+.cont 
+{
+	margin-top: 0px;
+	padding-top: 0px;
+	width: 500px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#login
+{
+	list-style: none;
+}
+
+#login li
+{
+	padding: 3px;
+}
+
+.paddright
+{
+	padding-left: 10px;
+}
+
+.wiki
+{
+	margin-left: -125px;
+	width: 750px;
+	padding-bottom: 15px;
+	padding-top: 5px;
+	padding-right: 5px;
+	padding-left: 5px;
+	border-top: 1px solid;
+}
+
+.post
+{
+	padding: 4px 0 4px 0;
+}
+
+.wikiFormat 
+{
+	margin-right: -100px;
+	float: right;
+	width: 100px;
+	font-size: 10px;
+}
+
+.nav 
+{
+	width: 500px;
+	padding: 9px;
+	border: dotted;
+	border-width: 0 2px 2px 2px;
+	border-color: black;
+	color: white;
+	text-align: right;
+}
+
+.nav .nitem 
+{
+	display: inline;
+	margin: 0 5px 0 5px;
+}
+

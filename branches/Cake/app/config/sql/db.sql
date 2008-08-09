@@ -68,7 +68,8 @@ CREATE TABLE `users` (
 --
 
 DROP TABLE IF EXISTS `wiki`;
-CREATE TABLE `wiki` (
+DROP TABLE IF EXISTS `wikis`;
+CREATE TABLE `wikis` (
 	`ID` bigint(20) NOT NULL auto_increment,
 	`pID` bigint(20) NOT NULL,
 	`content` mediumtext NOT NULL,

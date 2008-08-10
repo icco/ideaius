@@ -44,9 +44,9 @@ foreach ($posts as $post):
 			<?php echo $post['Post']['cID']; ?>
 		</td>
 		<td class="actions">
-			<?php echo $html->link(__('View', true), array('action'=>'view', $post['Post']['id'])); ?>
-			<?php echo $html->link(__('Edit', true), array('action'=>'edit', $post['Post']['id'])); ?>
-			<?php echo $html->link(__('Delete', true), array('action'=>'delete', $post['Post']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $post['Post']['id'])); ?>
+			<?php echo $html->link(__('View', true), array('action'=>'view', $post['Post']['ID'])); ?>
+			<?php echo $html->link(__('Edit', true), array('action'=>'edit', $post['Post']['ID'])); ?>
+			<?php echo $html->link(__('Delete', true), array('action'=>'delete', $post['Post']['ID']), null, sprintf(__('Are you sure you want to delete # %s?', true), $post['Post']['ID'])); ?>
 		</td>
 	</tr>
 <?php endforeach; ?>

@@ -3,11 +3,11 @@
 	<fieldset>
  		<legend><?php __('Add Post');?></legend>
 	<?php
-		echo $form->input('ID');
+		//echo $form->input('ID');
 		echo $form->input('content');
-		echo $form->input('time');
+		//echo $form->input('time');
 		echo $form->input('user');
-		echo $form->input('wikiptr');
+		//echo $form->input('wikiptr');
 		echo $form->input('cID');
 	?>
 	</fieldset>

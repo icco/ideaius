@@ -1,34 +1,33 @@
 <?php 
 /* SVN FILE: $Id$ */
-/* Post Test cases generated on: 2008-08-09 17:08:08 : 1218327788*/
-App::import('Model', 'Post');
+/* Category Test cases generated on: 2008-08-09 18:08:33 : 1218330393*/
+App::import('Model', 'Category');
 
-class TestPost extends Post {
+class TestCategory extends Category {
 	var $cacheSources = false;
 	var $useDbConfig  = 'test_suite';
 }
 
-class PostTestCase extends CakeTestCase {
-	var $Post = null;
-	var $fixtures = array('app.post');
+class CategoryTestCase extends CakeTestCase {
+	var $Category = null;
+	var $fixtures = array('app.category');
 
 	function start() {
 		parent::start();
-		$this->Post = new TestPost();
+		$this->Category = new TestCategory();
 	}
 
-	function testPostInstance() {
-		$this->assertTrue(is_a($this->Post, 'Post'));
+	function testCategoryInstance() {
+		$this->assertTrue(is_a($this->Category, 'Category'));
 	}
 
-	function testPostFind() {
-		$results = $this->Post->recursive = -1;
-		$results = $this->Post->find('first');
+	function testCategoryFind() {
+		$results = $this->Category->recursive = -1;
+		$results = $this->Category->find('first');
 		$this->assertTrue(!empty($results));
 
-		$expected = array('Post' => array(
-			'ID'  => 1,
-			'content'  => 'Lorem ipsum dolor sit amet, aliquet feugiat. Convallis morbi fringilla gravida,
+		$expected = array('Category' => array(
+			'name'  => 'Lorem ipsum dolor sit amet, aliquet feugiat. Convallis morbi fringilla gravida,
 									phasellus feugiat dapibus velit nunc, pulvinar eget sollicitudin venenatis cum nullam,
 									vivamus ut a sed, mollitia lectus. Nulla vestibulum massa neque ut et, id hendrerit sit,
 									feugiat in taciti enim proin nibh, tempor dignissim, rhoncus duis vestibulum nunc mattis convallis.
@@ -40,10 +39,7 @@ class PostTestCase extends CakeTestCase {
 									litora luctus suspendisse sed id luctus ut. Pede volutpat quam vitae, ut ornare wisi. Velit dis tincidunt,
 									pede vel eleifend nec curabitur dui pellentesque, volutpat taciti aliquet vivamus viverra, eget tellus ut
 									feugiat lacinia mauris sed, lacinia et felis.',
-			'time'  => '2008-08-09 17:23:03',
-			'user'  => 1,
-			'wikiptr'  => 1,
-			'cID'  => 1
+			'ID'  => 1
 			));
 		$this->assertEqual($results, $expected);
 	}

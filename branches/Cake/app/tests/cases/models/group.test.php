@@ -1,34 +1,35 @@
 <?php 
 /* SVN FILE: $Id$ */
-/* Post Test cases generated on: 2008-08-09 17:08:08 : 1218327788*/
-App::import('Model', 'Post');
+/* Group Test cases generated on: 2008-08-09 18:08:45 : 1218330405*/
+App::import('Model', 'Group');
 
-class TestPost extends Post {
+class TestGroup extends Group {
 	var $cacheSources = false;
 	var $useDbConfig  = 'test_suite';
 }
 
-class PostTestCase extends CakeTestCase {
-	var $Post = null;
-	var $fixtures = array('app.post');
+class GroupTestCase extends CakeTestCase {
+	var $Group = null;
+	var $fixtures = array('app.group');
 
 	function start() {
 		parent::start();
-		$this->Post = new TestPost();
+		$this->Group = new TestGroup();
 	}
 
-	function testPostInstance() {
-		$this->assertTrue(is_a($this->Post, 'Post'));
+	function testGroupInstance() {
+		$this->assertTrue(is_a($this->Group, 'Group'));
 	}
 
-	function testPostFind() {
-		$results = $this->Post->recursive = -1;
-		$results = $this->Post->find('first');
+	function testGroupFind() {
+		$results = $this->Group->recursive = -1;
+		$results = $this->Group->find('first');
 		$this->assertTrue(!empty($results));
 
-		$expected = array('Post' => array(
+		$expected = array('Group' => array(
 			'ID'  => 1,
-			'content'  => 'Lorem ipsum dolor sit amet, aliquet feugiat. Convallis morbi fringilla gravida,
+			'pID'  => 1,
+			'name'  => 'Lorem ipsum dolor sit amet, aliquet feugiat. Convallis morbi fringilla gravida,
 									phasellus feugiat dapibus velit nunc, pulvinar eget sollicitudin venenatis cum nullam,
 									vivamus ut a sed, mollitia lectus. Nulla vestibulum massa neque ut et, id hendrerit sit,
 									feugiat in taciti enim proin nibh, tempor dignissim, rhoncus duis vestibulum nunc mattis convallis.
@@ -40,10 +41,7 @@ class PostTestCase extends CakeTestCase {
 									litora luctus suspendisse sed id luctus ut. Pede volutpat quam vitae, ut ornare wisi. Velit dis tincidunt,
 									pede vel eleifend nec curabitur dui pellentesque, volutpat taciti aliquet vivamus viverra, eget tellus ut
 									feugiat lacinia mauris sed, lacinia et felis.',
-			'time'  => '2008-08-09 17:23:03',
-			'user'  => 1,
-			'wikiptr'  => 1,
-			'cID'  => 1
+			'usercount'  => 1
 			));
 		$this->assertEqual($results, $expected);
 	}

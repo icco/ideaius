@@ -1,10 +1,9 @@
 <?php 
 /* SVN FILE: $Id$ */
-/* Post Fixture generated on: 2008-08-08 21:08:37 : 1218254977*/
+/* Post Fixture generated on: 2008-08-09 17:08:03 : 1218327783*/
 
 class PostFixture extends CakeTestFixture {
 	var $name = 'Post';
-	var $table = 'posts';
 	var $fields = array(
 			'ID' => array('type'=>'integer', 'null' => false, 'default' => NULL, 'length' => 20, 'key' => 'primary'),
 			'content' => array('type'=>'text', 'null' => false),
@@ -28,7 +27,7 @@ class PostFixture extends CakeTestFixture {
 									litora luctus suspendisse sed id luctus ut. Pede volutpat quam vitae, ut ornare wisi. Velit dis tincidunt,
 									pede vel eleifend nec curabitur dui pellentesque, volutpat taciti aliquet vivamus viverra, eget tellus ut
 									feugiat lacinia mauris sed, lacinia et felis.',
-			'time'  => '2008-08-08 21:09:37',
+			'time'  => '2008-08-09 17:23:03',
 			'user'  => 1,
 			'wikiptr'  => 1,
 			'cID'  => 1

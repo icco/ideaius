@@ -1,33 +1,34 @@
 <?php 
 /* SVN FILE: $Id$ */
-/* Post Test cases generated on: 2008-08-09 17:08:08 : 1218327788*/
-App::import('Model', 'Post');
+/* Wiki Test cases generated on: 2008-08-09 17:08:37 : 1218327817*/
+App::import('Model', 'Wiki');
 
-class TestPost extends Post {
+class TestWiki extends Wiki {
 	var $cacheSources = false;
 	var $useDbConfig  = 'test_suite';
 }
 
-class PostTestCase extends CakeTestCase {
-	var $Post = null;
-	var $fixtures = array('app.post');
+class WikiTestCase extends CakeTestCase {
+	var $Wiki = null;
+	var $fixtures = array('app.wiki');
 
 	function start() {
 		parent::start();
-		$this->Post = new TestPost();
+		$this->Wiki = new TestWiki();
 	}
 
-	function testPostInstance() {
-		$this->assertTrue(is_a($this->Post, 'Post'));
+	function testWikiInstance() {
+		$this->assertTrue(is_a($this->Wiki, 'Wiki'));
 	}
 
-	function testPostFind() {
-		$results = $this->Post->recursive = -1;
-		$results = $this->Post->find('first');
+	function testWikiFind() {
+		$results = $this->Wiki->recursive = -1;
+		$results = $this->Wiki->find('first');
 		$this->assertTrue(!empty($results));
 
-		$expected = array('Post' => array(
+		$expected = array('Wiki' => array(
 			'ID'  => 1,
+			'pID'  => 1,
 			'content'  => 'Lorem ipsum dolor sit amet, aliquet feugiat. Convallis morbi fringilla gravida,
 									phasellus feugiat dapibus velit nunc, pulvinar eget sollicitudin venenatis cum nullam,
 									vivamus ut a sed, mollitia lectus. Nulla vestibulum massa neque ut et, id hendrerit sit,
@@ -40,10 +41,8 @@ class PostTestCase extends CakeTestCase {
 									litora luctus suspendisse sed id luctus ut. Pede volutpat quam vitae, ut ornare wisi. Velit dis tincidunt,
 									pede vel eleifend nec curabitur dui pellentesque, volutpat taciti aliquet vivamus viverra, eget tellus ut
 									feugiat lacinia mauris sed, lacinia et felis.',
-			'time'  => '2008-08-09 17:23:03',
-			'user'  => 1,
-			'wikiptr'  => 1,
-			'cID'  => 1
+			'date'  => '2008-08-09 17:23:37',
+			'uID'  => 1
 			));
 		$this->assertEqual($results, $expected);
 	}

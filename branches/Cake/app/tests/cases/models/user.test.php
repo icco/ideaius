@@ -1,6 +1,6 @@
 <?php 
 /* SVN FILE: $Id$ */
-/* User Test cases generated on: 2008-08-08 21:08:02 : 1218255422*/
+/* User Test cases generated on: 2008-08-09 17:08:23 : 1218327803*/
 App::import('Model', 'User');
 
 class TestUser extends User {
@@ -76,7 +76,7 @@ class UserTestCase extends CakeTestCase {
 									litora luctus suspendisse sed id luctus ut. Pede volutpat quam vitae, ut ornare wisi. Velit dis tincidunt,
 									pede vel eleifend nec curabitur dui pellentesque, volutpat taciti aliquet vivamus viverra, eget tellus ut
 									feugiat lacinia mauris sed, lacinia et felis.',
-			'bday'  => '2008-08-08',
+			'bday'  => '2008-08-09',
 			'location'  => 'Lorem ipsum dolor sit amet, aliquet feugiat. Convallis morbi fringilla gravida,
 									phasellus feugiat dapibus velit nunc, pulvinar eget sollicitudin venenatis cum nullam,
 									vivamus ut a sed, mollitia lectus. Nulla vestibulum massa neque ut et, id hendrerit sit,
@@ -89,7 +89,7 @@ class UserTestCase extends CakeTestCase {
 									litora luctus suspendisse sed id luctus ut. Pede volutpat quam vitae, ut ornare wisi. Velit dis tincidunt,
 									pede vel eleifend nec curabitur dui pellentesque, volutpat taciti aliquet vivamus viverra, eget tellus ut
 									feugiat lacinia mauris sed, lacinia et felis.',
-			'created'  => '2008-08-08 21:17:02'
+			'created'  => '2008-08-09 17:23:20'
 			));
 		$this->assertEqual($results, $expected);
 	}

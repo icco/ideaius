@@ -1,33 +1,20 @@
 <?php 
 /* SVN FILE: $Id$ */
-/* Post Test cases generated on: 2008-08-09 17:08:08 : 1218327788*/
-App::import('Model', 'Post');
+/* Wiki Fixture generated on: 2008-08-09 17:08:37 : 1218327817*/
 
-class TestPost extends Post {
-	var $cacheSources = false;
-	var $useDbConfig  = 'test_suite';
-}
-
-class PostTestCase extends CakeTestCase {
-	var $Post = null;
-	var $fixtures = array('app.post');
-
-	function start() {
-		parent::start();
-		$this->Post = new TestPost();
-	}
-
-	function testPostInstance() {
-		$this->assertTrue(is_a($this->Post, 'Post'));
-	}
-
-	function testPostFind() {
-		$results = $this->Post->recursive = -1;
-		$results = $this->Post->find('first');
-		$this->assertTrue(!empty($results));
-
-		$expected = array('Post' => array(
+class WikiFixture extends CakeTestFixture {
+	var $name = 'Wiki';
+	var $fields = array(
+			'ID' => array('type'=>'integer', 'null' => false, 'default' => NULL, 'length' => 20, 'key' => 'primary'),
+			'pID' => array('type'=>'integer', 'null' => false, 'length' => 20),
+			'content' => array('type'=>'text', 'null' => false),
+			'date' => array('type'=>'datetime', 'null' => false),
+			'uID' => array('type'=>'integer', 'null' => false, 'length' => 20),
+			'indexes' => array('PRIMARY' => array('column' => 'ID', 'unique' => 1))
+			);
+	var $records = array(array(
 			'ID'  => 1,
+			'pID'  => 1,
 			'content'  => 'Lorem ipsum dolor sit amet, aliquet feugiat. Convallis morbi fringilla gravida,
 									phasellus feugiat dapibus velit nunc, pulvinar eget sollicitudin venenatis cum nullam,
 									vivamus ut a sed, mollitia lectus. Nulla vestibulum massa neque ut et, id hendrerit sit,
@@ -40,12 +27,8 @@ class PostTestCase extends CakeTestCase {
 									litora luctus suspendisse sed id luctus ut. Pede volutpat quam vitae, ut ornare wisi. Velit dis tincidunt,
 									pede vel eleifend nec curabitur dui pellentesque, volutpat taciti aliquet vivamus viverra, eget tellus ut
 									feugiat lacinia mauris sed, lacinia et felis.',
-			'time'  => '2008-08-09 17:23:03',
-			'user'  => 1,
-			'wikiptr'  => 1,
-			'cID'  => 1
+			'date'  => '2008-08-09 17:23:37',
+			'uID'  => 1
 			));
-		$this->assertEqual($results, $expected);
-	}
 }
 ?>

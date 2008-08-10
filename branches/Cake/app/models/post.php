@@ -7,5 +7,17 @@ class Post extends AppModel {
 		'cID' => array('numeric')
 	);
 
+	/**
+	 * This should actually edit and save the data, not just barf and say it's 
+	 * ok like a bad drunk.
+	 */
+	function save($incoming)
+	{
+		print "<pre>";
+		print_r($incoming);
+		print "</pre>";
+		return true;
+	}
+
 }
 ?>

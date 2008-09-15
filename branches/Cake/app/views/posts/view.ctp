@@ -35,8 +35,8 @@
 </div>
 <div class="actions">
 	<ul>
-		<li><?php echo $html->link(__('Edit Post', true), array('action'=>'edit', $post['Post']['id'])); ?> </li>
-		<li><?php echo $html->link(__('Delete Post', true), array('action'=>'delete', $post['Post']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $post['Post']['id'])); ?> </li>
+		<li><?php echo $html->link(__('Edit Post', true), array('action'=>'edit', $post['Post']['ID'])); ?> </li>
+		<li><?php echo $html->link(__('Delete Post', true), array('action'=>'delete', $post['Post']['ID']), null, sprintf(__('Are you sure you want to delete # %s?', true), $post['Post']['ID'])); ?> </li>
 		<li><?php echo $html->link(__('List Posts', true), array('action'=>'index')); ?> </li>
 		<li><?php echo $html->link(__('New Post', true), array('action'=>'add')); ?> </li>
 	</ul>

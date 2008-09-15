@@ -1,7 +1,9 @@
 <?php
 function get_rev() {
+//Idea from http://wordpress.org/extend/plugins/show-svn-revision/
 $file = file('.svn/entries');
-return 'SVN Path: <a href="' . trim($file[4]) . '">' . strip_tags(trim($file[4])) . '</a> | Revision: ' . strip_tags($file[3]) . '<br />';
+$where = 'SVN Path: <a href="' . trim($file[4]) . '">' . strip_tags(trim($file[4])) . '</a> | Revision: ' . strip_tags($file[3]) . '<br />';
+return strip_tags($file[3]);
 } ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">

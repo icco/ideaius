@@ -95,3 +95,11 @@ p.heading
 	margin: 0 5px 0 5px;
 }
 
+#footer 
+{
+	padding: 10px;
+	border: dotted;
+	border-width: 2px 2px 0 2px;
+	border-color: black;
+}
+

@@ -9,7 +9,7 @@ class Post extends AppModel {
 
 	/**
 	 * This should actually edit and save the data, not just barf and say it's 
-	 * ok like a bad drunk.
+	 * ok like a bad drunk. LOL, I am so funny...
 	 */
 	function save($incoming)
 	{

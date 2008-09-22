@@ -28,7 +28,7 @@ echo $paginator->counter(array(
 	<th><?php echo $paginator->sort('content');?></th>
 	<th><?php echo $paginator->sort('time');?></th>
 	<th><?php echo $paginator->sort('user');?></th>
-	<th><?php echo $paginator->sort('wikiptr');?></th>
+	<!--<th><?php echo $paginator->sort('wikiptr');?></th>-->
 	<th><?php echo $paginator->sort('cID');?></th>
 	<th class="actions"><?php __('Actions');?></th>
 </tr>

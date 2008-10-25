@@ -22,8 +22,9 @@ CREATE TABLE `posts` (
 	`wikiptr` bigint(20) default NULL,
 	`cID` bigint(20) NOT NULL,
 	PRIMARY KEY  (`pID`),
-	Foreign Key(`cID`) references categories,
-	Foreign Key(`uID`) references users
+	Foreign Key(`cID`) references categories(`cID`),
+	Foreign Key(`uID`) references users(`uID`),
+	Foreign Key(`wikiptr`) references wikis(`wID`)
 ) ENGINE=InnoDB;
 
 --
@@ -80,7 +81,7 @@ CREATE TABLE `wikis` (
 	`date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 	`uID` bigint(20) NOT NULL,
 	PRIMARY KEY  (`wID`),
-	Foreign Key(`pID`) references posts 
+	Foreign Key(`pID`) references posts(`pID`) 
 ) ENGINE=InnoDB;
 
 --
@@ -105,9 +106,9 @@ CREATE TABLE `security` (
 	`pID` bigint(20) NOT NULL,
 	`permissions` int NOT NULL,
 	PRIMARY KEY (`PID`),
-	Foreign Key(`pID`) references posts,
-	Foreign Key(`uID`) references users, 
-	Foreign Key(`gID`) references groups, 
+	Foreign Key(`pID`) references posts(`pID`),
+	Foreign Key(`uID`) references users(`uID`), 
+	Foreign Key(`gID`) references groups(`gID`) 
 ) ENGINE=InnoDB;
 
 --
@@ -119,7 +120,7 @@ CREATE TABLE `u2g` (
 	`uID` int(11) NOT NULL,
 	`gID` int(11) NOT NULL,
 	PRIMARY KEY  (`gID`),
-	Foreign Key(`uID`) references users,
-	Foreign Key(`gID`) references groups, 
+	Foreign Key(`uID`) references users(`uID`),
+	Foreign Key(`gID`) references groups(`gID`) 
 ) ENGINE=InnoDB;
 

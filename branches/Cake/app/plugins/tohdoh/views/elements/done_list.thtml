@@ -1,0 +1,21 @@
+<?php if(!empty($nodesDone)): ?>
+	
+  <h2>And these are done:</h2>
+  <ul>
+  <?php foreach($nodesDone as $n): ?>
+	
+		<li class="done" id="node_<?=$n['Node']['id']?>" 
+		onmouseover="Element.show('tools_<?=$n['Node']['id']?>')"
+		onmouseout="Element.hide('tools_<?=$n['Node']['id']?>')"
+		>
+					   
+		<span id="done_<?php echo $n['Node']['id']?>"><?=$n['Node']['name']?></span>			   
+		
+		<?php echo $this->renderElement('done_tools',array('task_id'=>$n['Node']['id']))?>
+		
+		</li>
+  	
+  <?php endforeach; ?>
+  </ul>
+  
+<?php endif; ?>

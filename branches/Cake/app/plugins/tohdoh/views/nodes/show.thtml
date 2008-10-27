@@ -1,0 +1,13 @@
+
+<?php echo $ajax->div('add_id')?>
+	<?php echo $html->hidden('Node/parent_id',array('value'=>$currentId))?>
+<?php echo $ajax->divEnd('add_id')?>
+	  
+<?php echo $ajax->div('tree')?>
+	<?=$this->renderElement('nodes_tree')?>
+<?php echo $ajax->divEnd('tree')?>  
+
+<?php echo $ajax->div('lists')?>	
+	<?php echo $this->renderElement('nodes_list')?>
+<?php echo $ajax->divEnd('lists')?>
+	  

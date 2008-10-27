@@ -1,0 +1,109 @@
+body {
+	margin:0; background-image:url("../../img/tohdoh/bg.jpg");
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	color:#333333;
+}
+
+
+#page {
+	background-color:#FFFFFF;
+	width:500px;
+	border-top: 8px #414d5c solid;
+	border-bottom: 3px #414d5c solid;
+	margin: 0 auto;
+	display:table;
+	padding-bottom:5px;
+	padding-left:15px;
+	height: 400px;
+}
+
+h1 {font-size:24px; font-family:"Trebuchet MS", Verdana, Arial, Helvetica, sans-serif; padding:5px 0 0 10px; margin:0}
+h2 {margin:0; color:#414d5c; letter-spacing:-1px; font-size:18px; font-family:"Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;}
+
+ul{margin:5px 0; padding:0 0 0 20px;font-family: "Myriad Web Pro"}
+ul li{list-style-image:url("../../img/tohdoh/control_play_blue.png"); font-size:24px}
+ul li a{text-decoration:none; color:#333333}
+ul li a:hover{text-decoration:underline; color:#0099FF}
+ul li img {border: 0;}
+
+ul li.task{list-style-image:url("../../img/tohdoh/bullet_green.png"); font-size:20px}
+ul li.task a{ font-size:18px}
+
+ul li.done{list-style-image:url("../../img/tohdoh/tick.png"); font-size:16px; color: #666666; text-decoration: line-through; font-style: italic;}
+ul li.done span{text-decoration: none;}
+
+p {font-size:10px; margin:0}
+p a{color:#0099FF; text-decoration:none}
+
+.style1 
+{
+	color: #414d5c
+}
+
+.addbox 
+{
+	margin: 10px 0;
+	text-align:left;
+	width: 70%;
+	background-color:#eeeeee;
+	padding: 10px;
+	border: 1px #cccccc solid
+}
+
+.count
+{
+	color: #cccccc;
+	font-size:12px; 
+}
+
+.count .list
+{
+	color: #0099FF;
+	font-weight: bold;
+}
+.count .undone
+{
+	color: #74DD82;
+	font-weight: bold;
+}
+.count .done
+{
+	color: #FAD163;
+	font-weight: bold;
+}
+
+#tree
+{
+	font-family: Verdana;
+	margin-left: 20px;
+	margin-bottom: 10px;
+	border-bottom: 1px dotted #000000;
+}
+
+#tree a:link, #tree a:visited
+{
+	text-decoration: none;
+	color: #0099FF;
+	font-size: 14px;
+}
+
+#tree a:hover
+{
+	text-decoration: underline;
+	color: #FF9900;
+}
+
+#msg {
+	margin: 10px;
+	background-color:#ffdddd;
+	padding: 10px;
+	border: 1px #cc0000 solid;
+	color: #cc0000;
+	font-weight: bold;
+}
+#cakeSqlLog
+{
+	font-size:10px;
+	background-color:#FFFFFF;
+}
+

@@ -1,0 +1,18 @@
+<span id="tools_<?php echo $task_id?>" style="display: none">
+
+	<?php echo $ajax->link($html->image('tohdoh/bullet_go.png'),array('action'=>'show',$task_id),
+			   array('update'=>array('tree','lists','add_id')),null,false)?>
+			   
+	<?php echo $ajax->link($html->image('tohdoh/accept.png'),
+                   array('action'=>'done',$task_id),
+				   array('update'=>'tasks_done',
+                         'before'=>"Element.remove('node_$task_id');"),
+                   null,false)?>
+	
+	<?php echo $ajax->editor('undone_link_'.$task_id,array('action'=>'edit',$task_id), array('clickToEditText' => 'Click to edit task'))?>
+	
+	<?php echo $ajax->link($html->image('tohdoh/delete.png'),
+                   array('action'=>'del',$task_id),
+				   array('complete'=>"new Effect.Fade('node_$task_id');"),
+				   "Are you sure you want to delete this task ?",false)?>
+</span>

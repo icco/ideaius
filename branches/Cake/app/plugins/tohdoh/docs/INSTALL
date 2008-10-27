@@ -1,0 +1,32 @@
+﻿ToDoh: YET ANOTHER CAKEPHP AJAX TODO LIST DEMO
+A live demo is available here: http://www.devmoz.com/tohdoh/nodes/
+
+How to install TohDoh
+=====================
+
+1) Run the SQL file provided or use phpMyAdmin
+2) Copy the content of the app folder over your app folder. 
+3) Download http://script.aculo.us/downloads and put the files in webroot/js/
+4) Create a connection in your database.php config file and name it tohdoh. Or change the name to default in app/plugins/tohdoh/models/node.php
+	var $tohdoh = array(
+		'driver' => 'mysql',
+		'persistent' => false,
+		'host' => 'localhost',
+		'login' => 'root',
+		'password' => '123456',
+		'database' => 'devmoz',
+		'prefix' => 'tohdoh_'
+	);
+Notice the 'prefix'. if you don't want that, change the table name.
+5) Go to yourhost.tld/tohdoh/nodes/ and start adding tasks.
+
+I assumed you have cake version 1.2.
+You might need to change some minor things for it to work in 1.1, the form creation $form->create()
+to something like (no tested) <form method="post" action="<?php echo $html->url('/tohdoh/nodes/add') ?>">
+also I use the array syntax when specifying URLs, so you need to change things like 
+array('action'=>'x',$param) to '/tohdoh/nodes/x/'.$param etc..
+
+
+Cake!
+
+- Othman ouahbi aka CraZyLeGs

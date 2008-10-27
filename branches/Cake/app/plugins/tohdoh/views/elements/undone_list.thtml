@@ -1,0 +1,38 @@
+ <ul id="nodes">
+  <?php foreach($nodes as $n): ?>
+
+	<?php if($n['Node']['type'] == "L"): ?>
+		<li class="list" id="node_<?php echo $n['Node']['id']?>" 
+		onmouseover="Element.show('tools_<?php echo $n['Node']['id']?>')"
+		onmouseout="Element.hide('tools_<?php echo $n['Node']['id']?>')"
+		>
+					   
+		<span id="list_link_<?php echo $n['Node']['id']?>"><?php echo $n['Node']['name']?></span>
+				   
+			  <span class="count">
+			  - <span class="list"><?php echo (!empty($n[0]['num_lists']))?$n[0]['num_lists']:0?></span> lists
+			  - <span class="undone"><?php echo (!empty($n[0]['num_undone']))?$n[0]['num_undone']:0?></span> undone
+			  - <span class="done"><?php echo (!empty($n[0]['num_done']))?$n[0]['num_done']:0?></span> done
+			  </span>
+			  
+		<?php echo $this->renderElement('list_tools',array('task_id'=>$n['Node']['id']))?>
+		
+		</li>
+	<?php else: ?>
+	
+		<li class="task" id="node_<?php echo $n['Node']['id']?>" 
+		onmouseover="Element.show('tools_<?php echo $n['Node']['id']?>')"
+		onmouseout="Element.hide('tools_<?php echo $n['Node']['id']?>')"
+		>
+		<span id="undone_link_<?php echo $n['Node']['id']?>"><?=$n['Node']['name']?></span>
+		
+		<?php echo $this->renderElement('undone_tools',array('task_id'=>$n['Node']['id']))?>
+		
+		</li>
+	
+	<?php endif; ?>
+  	
+  <?php endforeach; ?>
+</ul>
+  
+  <?php echo $ajax->sortable('nodes',array('url'=>array('action'=>'sort')))?>

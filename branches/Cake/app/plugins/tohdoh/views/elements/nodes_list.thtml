@@ -1,0 +1,11 @@
+  <?php if(isset($add_msg)): ?>
+  	<div id="msg"><?php echo $add_msg?></div>
+  <?php endif; ?>
+  <?php if(!empty($nodes)): ?>
+  <div id="undone_list">
+ 	<?php echo $this->renderElement('undone_list',array('nodes'=>$nodes))?>
+  </div>
+  <?php endif; ?>
+  <div id="tasks_done">
+  	<?php echo $this->renderElement('done_list')?>
+  </div>

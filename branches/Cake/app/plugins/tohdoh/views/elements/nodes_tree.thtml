@@ -1,0 +1,14 @@
+<?php if(!empty($tree)): ?>
+<span class="count">
+<?php echo $ajax->link("Root",array('action'=>'show',0),array('update'=>array('tree','lists','add_id')))?>
+</span>
+<?php foreach($tree as $t): ?>
+
+	<?php echo $html->image('tohdoh/blue_arrow.png')?>
+	<span class="count">
+		<?php echo $ajax->link($t['Node']['name'],array('action'=>'show', $t['Node']['id']),
+		               array('update'=>array('tree','lists','add_id')))?>
+	</span>
+
+<?php endforeach; ?>
+<?php endif; ?>

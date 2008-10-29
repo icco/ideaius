@@ -1,61 +1,42 @@
+--CREATE DATABASE ideaius;
+
+-- Drop it like it's hot.
+DROP TABLE IF EXISTS `u2g`;
+DROP TABLE IF EXISTS `t2p`;
+DROP TABLE IF EXISTS `security`;
+DROP TABLE IF EXISTS `posts`;
+DROP TABLE IF EXISTS `tags`;
+DROP TABLE IF EXISTS `wiki`;
+DROP TABLE IF EXISTS `wikis`;
+DROP TABLE IF EXISTS `users`;
+DROP TABLE IF EXISTS `groups`;
+DROP TABLE IF EXISTS `categories`;
+
 --
 -- Table structure for table `categories`
 --
 
-DROP TABLE IF EXISTS `categories`;
 CREATE TABLE `categories` (
 	`cname` text NOT NULL,
-	`cID` int(11) NOT NULL auto_increment,
+	`cID` bigint(20) UNSIGNED NOT NULL auto_increment,
 	PRIMARY KEY  (`cID`)
 ) ENGINE=InnoDB;
 
 --
--- Table structure for table `posts`
+-- Table structure for table `groups`
 --
-
-DROP TABLE IF EXISTS `posts`;
-CREATE TABLE `posts` (
-	`pID` bigint(20) NOT NULL auto_increment,
-	`content` text NOT NULL,
-	`time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-	`uID` bigint(20) NOT NULL,
-	`wikiptr` bigint(20) default NULL,
-	`cID` bigint(20) NOT NULL,
-	PRIMARY KEY  (`pID`),
-	Foreign Key(`cID`) references categories(`cID`),
-	Foreign Key(`uID`) references users(`uID`),
-	Foreign Key(`wikiptr`) references wikis(`wID`)
-) ENGINE=InnoDB;
-
---
--- Table structure for table `t2p`
---
-
-DROP TABLE IF EXISTS `t2p`;
-CREATE TABLE `t2p` (
-	`pID` int(11) NOT NULL,
-	`tID` int(11) NOT NULL,
-	PRIMARY KEY  (`tID`)
-	Foreign Key(`pID`) references posts 
-	Foreign Key(`tID`) references tags 
-) ENGINE=InnoDB;
-
---
--- Table structure for table `tags`
---
-
-DROP TABLE IF EXISTS `tags`;
-CREATE TABLE `tags` (
-	`tID` int(11) NOT NULL auto_increment,
+CREATE TABLE `groups` (
+	`gID` bigint(20) UNSIGNED NOT NULL auto_increment,
+	`pID` bigint(20) UNSIGNED NOT NULL,
 	`name` text NOT NULL,
-	PRIMARY KEY  (`tID`)
+	`usercount` int NOT NULL,
+	PRIMARY KEY  (`gID`)
 ) ENGINE=InnoDB;
 
 --
 -- Table structure for table `users`
 --
 
-DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
 	`uID` bigint(20) unsigned NOT NULL auto_increment,
 	`RealName` text,
@@ -68,57 +49,75 @@ CREATE TABLE `users` (
 	PRIMARY KEY  (`uID`)
 ) ENGINE=InnoDB;
 
+
 --
 -- Table structure for table `wiki`
 --
-
-DROP TABLE IF EXISTS `wiki`;
-DROP TABLE IF EXISTS `wikis`;
 CREATE TABLE `wikis` (
-	`wID` bigint(20) NOT NULL auto_increment,
-	`pID` bigint(20) NOT NULL,
+	`wID` bigint(20) UNSIGNED NOT NULL auto_increment,
 	`content` mediumtext NOT NULL,
-	`date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+	`edate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 	`uID` bigint(20) NOT NULL,
-	PRIMARY KEY  (`wID`),
-	Foreign Key(`pID`) references posts(`pID`) 
+	PRIMARY KEY  (`wID`)
 ) ENGINE=InnoDB;
 
 --
--- Table structure for table `groups`
+-- Table structure for table `tags`
 --
-DROP TABLE IF EXISTS `groups`;
-CREATE TABLE `groups` (
-	`gID` bigint(20) NOT NULL auto_increment,
-	`pID` bigint(20) NOT NULL,
+
+CREATE TABLE `tags` (
+	`tID` bigint(20) UNSIGNED NOT NULL auto_increment,
 	`name` text NOT NULL,
-	`usercount` int NOT NULL,
-	PRIMARY KEY  (`gID`)
+	PRIMARY KEY  (`tID`)
+) ENGINE=InnoDB;
+
+--
+-- Table structure for table `posts`
+--
+CREATE TABLE `posts` (
+	`pID` bigint(20) UNSIGNED NOT NULL auto_increment,
+	`content` text NOT NULL,
+	`ctime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	`uID` bigint(20) UNSIGNED NOT NULL,
+	`wikiptr` bigint(20) UNSIGNED default NULL,
+	`cID` bigint(20) UNSIGNED NOT NULL,
+	PRIMARY KEY  (`pID`),
+	Foreign Key(`cID`) references categories(`cID`),
+	Foreign Key(`uID`) references users(`uID`),
+	Foreign Key(`wikiptr`) references wikis(`wID`)
 ) ENGINE=InnoDB;
 
 --
 -- Table structure for table `security`
 --
-DROP TABLE IF EXISTS `security`;
 CREATE TABLE `security` (
-	`uID` bigint(20) NOT NULL,
-	`gID` bigint(20) NOT NULL,
-	`pID` bigint(20) NOT NULL,
+	`uID` bigint(20) UNSIGNED NOT NULL,
+	`gID` bigint(20) UNSIGNED NOT NULL,
+	`pID` bigint(20) UNSIGNED NOT NULL,
 	`permissions` int NOT NULL,
-	PRIMARY KEY (`PID`),
+	PRIMARY KEY (`pID`),
 	Foreign Key(`pID`) references posts(`pID`),
 	Foreign Key(`uID`) references users(`uID`), 
 	Foreign Key(`gID`) references groups(`gID`) 
 ) ENGINE=InnoDB;
 
 --
+-- Table structure for table `t2p`
+--
+CREATE TABLE `t2p` (
+	`pID` bigint(20) UNSIGNED NOT NULL,
+	`tID` bigint(20) UNSIGNED NOT NULL,
+	PRIMARY KEY  (`tID`),
+	Foreign Key(`pID`) references posts(`pID`),
+	Foreign Key(`tID`) references tags(`tID`) 
+) ENGINE=InnoDB;
+
+--
 -- Table structure for table `u2g`
 --
-
-DROP TABLE IF EXISTS `u2g`;
 CREATE TABLE `u2g` (
-	`uID` int(11) NOT NULL,
-	`gID` int(11) NOT NULL,
+	`uID` bigint(20) unsigned NOT NULL,
+	`gID` bigint(20) UNSIGNED NOT NULL,
 	PRIMARY KEY  (`gID`),
 	Foreign Key(`uID`) references users(`uID`),
 	Foreign Key(`gID`) references groups(`gID`) 

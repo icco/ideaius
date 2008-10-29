@@ -32,3 +32,4 @@ APP=`pwd`
 exec php -q ${LIB}cake.php -working "${APP}" "$@"
 
 exit;
+

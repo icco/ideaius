@@ -57,7 +57,7 @@ CREATE TABLE `wikis` (
 	`wID` bigint(20) UNSIGNED NOT NULL auto_increment,
 	`content` mediumtext NOT NULL,
 	`edate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-	`uID` bigint(20) NOT NULL,
+	`uID` bigint(20) unsigned NOT NULL,
 	PRIMARY KEY  (`wID`),
 	Foreign Key(`uID`) references users(`uID`)
 ) ENGINE=InnoDB;

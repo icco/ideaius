@@ -58,7 +58,8 @@ CREATE TABLE `wikis` (
 	`content` mediumtext NOT NULL,
 	`edate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 	`uID` bigint(20) NOT NULL,
-	PRIMARY KEY  (`wID`)
+	PRIMARY KEY  (`wID`),
+	Foreign Key(`uID`) references users(`uID`)
 ) ENGINE=InnoDB;
 
 --

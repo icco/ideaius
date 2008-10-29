@@ -2,22 +2,30 @@
 class Post extends AppModel {
 
 	var $name = 'Post';
+	var $primaryKey = 'pID';
 	var $validate = array(
-		'user' => array('numeric'),
+		'pID' => array('numeric'),
+		'uID' => array('numeric'),
 		'cID' => array('numeric')
 	);
 
-	/**
-	 * This should actually edit and save the data, not just barf and say it's 
-	 * ok like a bad drunk. LOL, I am so funny...
-	 */
-	function save($incoming)
-	{
-		print "<pre>";
-		print_r($incoming);
-		print "</pre>";
-		return true;
-	}
+	//The Associations below have been created with all possible keys, those that are not needed can be removed
+	var $hasOne = array(
+			'User' => array('className' => 'User',
+								'foreignKey' => 'uID',
+								'dependent' => false,
+								'conditions' => '',
+								'fields' => '',
+								'order' => ''
+			),
+			'Category' => array('className' => 'Category',
+								'foreignKey' => 'cID',
+								'dependent' => false,
+								'conditions' => '',
+								'fields' => '',
+								'order' => ''
+			)
+	);
 
 }
 ?>

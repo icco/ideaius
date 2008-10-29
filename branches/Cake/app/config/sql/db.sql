@@ -4,6 +4,7 @@
 DROP TABLE IF EXISTS `u2g`;
 DROP TABLE IF EXISTS `t2p`;
 DROP TABLE IF EXISTS `security`;
+DROP TABLE IF EXISTS `securities`;
 DROP TABLE IF EXISTS `posts`;
 DROP TABLE IF EXISTS `tags`;
 DROP TABLE IF EXISTS `wiki`;
@@ -91,12 +92,13 @@ CREATE TABLE `posts` (
 --
 -- Table structure for table `security`
 --
-CREATE TABLE `security` (
+CREATE TABLE `securities` (
 	`uID` bigint(20) UNSIGNED NOT NULL,
 	`gID` bigint(20) UNSIGNED NOT NULL,
 	`pID` bigint(20) UNSIGNED NOT NULL,
 	`permissions` int NOT NULL,
-	PRIMARY KEY (`pID`),
+	`sID` bigint(20) UNSIGNED NOT NULL,
+	PRIMARY KEY (`sID`),
 	Foreign Key(`pID`) references posts(`pID`),
 	Foreign Key(`uID`) references users(`uID`), 
 	Foreign Key(`gID`) references groups(`gID`) 

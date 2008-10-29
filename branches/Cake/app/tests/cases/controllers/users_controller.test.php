@@ -1,6 +1,6 @@
 <?php 
 /* SVN FILE: $Id$ */
-/* UsersController Test cases generated on: 2008-08-09 17:08:24 : 1218327804*/
+/* UsersController Test cases generated on: 2008-10-29 14:10:34 : 1225314154*/
 App::import('Controller', 'Users');
 
 class TestUsers extends UsersController {
@@ -12,6 +12,7 @@ class UsersControllerTest extends CakeTestCase {
 
 	function setUp() {
 		$this->Users = new TestUsers();
+		$this->Users->constructClasses();
 	}
 
 	function testUsersControllerInstance() {

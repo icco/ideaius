@@ -39,7 +39,7 @@ class PostsController extends AppController {
 				$this->Session->setFlash(__('The Post has been saved', true));
 				$this->redirect(array('action'=>'index'));
 			} else {
-				$this->Session->setFlash(__('The Post could not be saved. Please try again.', true));
+				$this->Session->setFlash(__('The Post could not be saved. Please, try again.', true));
 			}
 		}
 		if (empty($this->data)) {
@@ -58,6 +58,60 @@ class PostsController extends AppController {
 		}
 	}
 
+
+	function admin_index() {
+		$this->Post->recursive = 0;
+		$this->set('posts', $this->paginate());
+	}
+
+	function admin_view($id = null) {
+		if (!$id) {
+			$this->Session->setFlash(__('Invalid Post.', true));
+			$this->redirect(array('action'=>'index'));
+		}
+		$this->set('post', $this->Post->read(null, $id));
+	}
+
+	function admin_add() {
+		if (!empty($this->data)) {
+			$this->Post->create();
+			if ($this->Post->save($this->data)) {
+				$this->Session->setFlash(__('The Post has been saved', true));
+				$this->redirect(array('action'=>'index'));
+			} else {
+				$this->Session->setFlash(__('The Post could not be saved. Please, try again.', true));
+			}
+		}
+	}
+
+	function admin_edit($id = null) {
+		if (!$id && empty($this->data)) {
+			$this->Session->setFlash(__('Invalid Post', true));
+			$this->redirect(array('action'=>'index'));
+		}
+		if (!empty($this->data)) {
+			if ($this->Post->save($this->data)) {
+				$this->Session->setFlash(__('The Post has been saved', true));
+				$this->redirect(array('action'=>'index'));
+			} else {
+				$this->Session->setFlash(__('The Post could not be saved. Please, try again.', true));
+			}
+		}
+		if (empty($this->data)) {
+			$this->data = $this->Post->read(null, $id);
+		}
+	}
+
+	function admin_delete($id = null) {
+		if (!$id) {
+			$this->Session->setFlash(__('Invalid id for Post', true));
+			$this->redirect(array('action'=>'index'));
+		}
+		if ($this->Post->del($id)) {
+			$this->Session->setFlash(__('Post deleted', true));
+			$this->redirect(array('action'=>'index'));
+		}
+	}
+
 }
 ?>
-

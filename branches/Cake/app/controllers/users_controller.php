@@ -2,7 +2,7 @@
 class UsersController extends AppController {
 
 	var $name = 'Users';
-	var $helpers = array('Html', 'Form', 'ACL', 'Time');
+	var $helpers = array('Html', 'Form', 'Time');
 
 	function index() {
 		$this->User->recursive = 0;

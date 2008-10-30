@@ -1,9 +1,9 @@
 <div class="users view">
 <h2><?php  __('User');?></h2>
 	<dl><?php $i = 0; $class = ' class="altrow"';?>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('ID'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('UID'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $user['User']['ID']; ?>
+			<?php echo $user['User']['uID']; ?>
 			&nbsp;
 		</dd>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('RealName'); ?></dt>

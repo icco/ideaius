@@ -3,7 +3,7 @@
 	<fieldset>
  		<legend><?php __('Add User');?></legend>
 	<?php
-		echo $form->input('ID');
+		echo $form->input('uID');
 		echo $form->input('RealName');
 		echo $form->input('uname');
 		echo $form->input('email');

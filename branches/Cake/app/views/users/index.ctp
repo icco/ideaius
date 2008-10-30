@@ -8,7 +8,7 @@ echo $paginator->counter(array(
 ?></p>
 <table cellpadding="0" cellspacing="0">
 <tr>
-	<th><?php echo $paginator->sort('ID');?></th>
+	<th><?php echo $paginator->sort('uID');?></th>
 	<th><?php echo $paginator->sort('RealName');?></th>
 	<th><?php echo $paginator->sort('uname');?></th>
 	<th><?php echo $paginator->sort('email');?></th>
@@ -28,7 +28,7 @@ foreach ($users as $user):
 ?>
 	<tr<?php echo $class;?>>
 		<td>
-			<?php echo $user['User']['ID']; ?>
+			<?php echo $user['User']['uID']; ?>
 		</td>
 		<td>
 			<?php echo $user['User']['RealName']; ?>

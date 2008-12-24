@@ -31,8 +31,6 @@ define('HEALTH_PRIVATE_KEY', '/path/to/your/rsa_private_key.pem');
 // End Configuration                                                        //
 //////////////////////////////////////////////////////////////////////////////
 
-//set_include_path(get_include_path() . PATH_SEPARATOR . "../../../library/");
-
 // Load the Zend Gdata classes.
 require_once 'Zend/Loader.php';
 Zend_Loader::loadClass('Zend_Gdata_AuthSub');

@@ -44,9 +44,6 @@
  * handling.  
  */
 
-set_include_path(get_include_path() . PATH_SEPARATOR . "../../../library/");
-
-
 /**
  * @see Zend_Loader
  */

@@ -4,3 +4,6 @@ Install Ideaius
 2. Save it as config.php
 3. install database...
 
+Thanks,
+	/Nat
+

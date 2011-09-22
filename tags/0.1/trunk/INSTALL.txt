@@ -1,6 +1,0 @@
-Install Ideaius
-
-1. edit config_EDIT.php 
-2. Save it as config.php
-3. install database...
-

@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Ideaius<%= "#{title} - " if title %></title>
+
+    <%= favicon_tag ‘images/favicon.ico’, :type => ‘image/ico’ %>
+
+    <!-- Global Assets -->
+    <%= javascript_include_tag 'jquery' %>
+    <%= javascript_include_tag 'application' %>
+    <%= stylesheet_link_tag 'style' %>
+
+    <!-- Page specific assets -->
+    <%= yield_content :assets %>
+  </head>
+  <body>
+    <div id="container">
+      <div id="header">
+        <h1>Ideaius</h1>
+
+        <%= flash_tag :notice %>
+      </div>
+
+      <div id="main">
+        <%= yield %>
+      </div> <!-- End #main -->
+    </div> <!-- End #container -->
+  </body>
+</html>

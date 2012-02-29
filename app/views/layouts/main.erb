@@ -8,6 +8,7 @@
     <!-- Global Assets -->
     <%= javascript_include_tag 'jquery' %>
     <%= javascript_include_tag 'application' %>
+    <%= stylesheet_link_tag "http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:700,400" %>
     <%= stylesheet_link_tag 'style' %>
 
     <!-- Page specific assets -->
@@ -15,13 +16,15 @@
   </head>
   <body>
     <div id="container">
-      <div id="header">
+      <div id="header" class="bar">
         <h1>Ideaius</h1>
+      </div>
 
+      <div>
         <%= flash_tag :notice %>
       </div>
 
-      <div id="main">
+      <div id="main" class="bar">
         <%= yield %>
       </div> <!-- End #main -->
     </div> <!-- End #container -->

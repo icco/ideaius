@@ -2,7 +2,6 @@ Ideaus.controllers :idea do
   layout :main
   
   post :index do
-    p params
     i = Idea.new
     i.text = params["idea"]
     i.save
@@ -11,6 +10,7 @@ Ideaus.controllers :idea do
   end
 
   get :index do
-    "<pre>#{Idea.all.to_json}</pre>"
+    ideas = Idea.all
+    render "idea/index", :locals => { :ideas => ideas }
   end
 end

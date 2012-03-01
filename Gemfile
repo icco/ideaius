@@ -1,11 +1,5 @@
 source :rubygems
 
-# Project requirements
-gem "rake"
-gem "sinatra-flash", :require => "sinatra/flash"
-gem "thin"
-
-# Component requirements
 gem "activerecord", :require => "active_record"
 gem "erubis", "~> 2.7.0"
 gem "json"
@@ -15,6 +9,8 @@ gem "omniauth-github" # https://github.com/intridea/omniauth-github
 gem "omniauth-twitter" # https://github.com/arunagw/omniauth-twitter
 gem "rack", "~> 1.4.1"
 gem "rack-less"
+gem "rake"
+gem "sinatra-flash", :require => "sinatra/flash"
 
 # Padrino Stable Gem
 gem "padrino", "0.10.5"

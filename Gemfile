@@ -3,6 +3,7 @@ source :rubygems
 # Project requirements
 gem "rake"
 gem "sinatra-flash", :require => "sinatra/flash"
+gem "thin"
 
 # Component requirements
 gem "activerecord", :require => "active_record"

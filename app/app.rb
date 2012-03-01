@@ -8,6 +8,7 @@ class Ideaus < Padrino::Application
 
   use Rack::Session::Cookie
   use OmniAuth::Builder do
+    provider :developer if PADRINO_ENV == "development"
     provider :twitter,  ENV['TWITTER_KEY'],  ENV['TWITTER_SECRET']
     provider :github,   ENV['GITHUB_KEY'],   ENV['GITHUB_SECRET']
   end

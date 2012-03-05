@@ -13,6 +13,8 @@ class Ideaus < Padrino::Application
     provider :github,   ENV['GITHUB_KEY'],   ENV['GITHUB_SECRET']
   end
 
+  use Rack::Lint
+
   ##
   # Caching support
   #

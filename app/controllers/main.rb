@@ -4,7 +4,10 @@ Ideaus.controller do
   layout :main
 
   get '/' do
-    ideas = Idea.all
-    render 'idea/new', :locals => { :ideas => ideas }
+    if session['user']
+      redirect '/idea/new'
+    else
+      render :index
+    end
   end
 end

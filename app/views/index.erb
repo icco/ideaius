@@ -1,0 +1,11 @@
+<p>Welcome to Ideaius!</p>
+
+<p>
+<ul>
+  <li><a href="/auth/twitter">Log-in with Twitter</a></li>
+  <li><a href="/auth/github">Log-in with Github</a></li>
+  <% if PADRINO_ENV == "development" %>
+    <li><a href="/auth/developer">Log-in as a dev</a></li>
+  <% end %>
+</ul>
+</p>

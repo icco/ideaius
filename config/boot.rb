@@ -16,22 +16,7 @@ puts "Past bundler."
 ##
 # Enable devel logging
 #
-# Padrino::Logger::Config[:development] = { :log_level => :devel, :stream => :stdout }
-# Padrino::Logger.log_static = true
-#
+Padrino::Logger::Config[:development] = { :log_level => :devel, :stream => :stdout }
+Padrino::Logger.log_static = true
 
-##
-# Add your before load hooks here
-#
-Padrino.before_load do
-  puts "Before: " + Padrino.env.inspect
-end
-
-##
-# Add your after load hooks here
-#
-Padrino.after_load do
-  puts "After: " + Padrino.env.inspect
-end
-
-p Padrino.load!
+Padrino.load!

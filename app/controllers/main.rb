@@ -5,6 +5,6 @@ Ideaus.controller do
 
   get '/' do
     ideas = Idea.all
-    render :index, :locals => { :ideas => ideas }
+    render 'idea/new', :locals => { :ideas => ideas }
   end
 end

@@ -4,26 +4,37 @@
  */
 
 body {
-  background: url("/images/texturetastic_gray.png")
+  background: url("/images/texturetastic_gray.png");
+}
+
+#header {
+  margin-top: 50px;
+  margin-bottom: 30px;
+  background-color: #333;
+  background: url("/images/dark_geometric.png");
+
+  h1 {
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    font-weight: 400;
+    margin: 0;
+
+    a, a:visited, a:hover {
+      text-decoration: none;
+    }
+
+    a, a:visited {
+      color: #eaeaea;
+    }
+
+    a:hover {
+      color: #abc;
+    }
+  }
 }
 
 #container {
   width: 960px;
   margin: 0 auto;
-
-  #header {
-    margin-top: 50px;
-    margin-bottom: 30px;
-    background-color: #333;
-    background: url("/images/dark_geometric.png");
-
-    h1 {
-      font-family: 'Yanone Kaffeesatz', sans-serif;
-      font-weight: 400;
-      color: #ddd;
-      margin: 0;
-    }
-  }
 
   .bar {
     padding: 10px;

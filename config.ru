@@ -4,9 +4,6 @@
 # This file can be used to start Padrino,
 # just execute it from the command line.
 
-a = File.expand_path("../config/boot.rb", __FILE__)
-p a
-p __FILE__
-require a
+require File.expand_path("../config/boot.rb", __FILE__)
 
 run Padrino.application

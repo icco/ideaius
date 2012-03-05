@@ -18,12 +18,14 @@ Bundler.require(:default, PADRINO_ENV)
 # Add your before load hooks here
 #
 Padrino.before_load do
+  puts "Before: " + Padrino.env.inspect
 end
 
 ##
 # Add your after load hooks here
 #
 Padrino.after_load do
+  puts "After: " + Padrino.env.inspect
 end
 
 Padrino.load!

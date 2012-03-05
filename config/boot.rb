@@ -34,4 +34,4 @@ Padrino.after_load do
   puts "After: " + Padrino.env.inspect
 end
 
-p Padrino.load
+p Padrino.load!

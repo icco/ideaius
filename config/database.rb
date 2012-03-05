@@ -1,32 +1,29 @@
 ##
-# You can use other adapters like:
-#
-#   ActiveRecord::Base.configurations[:development] = {
-#     :adapter   => 'mysql',
-#     :encoding  => 'utf8',
-#     :reconnect => true,
-#     :database  => 'your_database',
-#     :pool      => 5,
-#     :username  => 'root',
-#     :password  => '',
-#     :host      => 'localhost',
-#     :socket    => '/tmp/mysql.sock'
-#   }
-#
+# Database config
+prefix = "ideaus"
+
 ActiveRecord::Base.configurations[:development] = {
   :adapter => 'sqlite3',
-  :database => Padrino.root('db', "ideaus_development.db")
-}
-
-ActiveRecord::Base.configurations[:production] = {
-  :adapter => 'postgres',
-  :database => ENV['DATABASE_URL']
+  :database => Padrino.root('db', "#{prefix}_development.db")
 }
 
 ActiveRecord::Base.configurations[:test] = {
   :adapter => 'sqlite3',
-  :database => Padrino.root('db', "ideaus_test.db")
+  :database => Padrino.root('db', "#{prefix}_test.db")
 }
+
+if ENV['DATABASE_URL'] && uri = URI.parse(ENV['DATABASE_URL'])
+  ActiveRecord::Base.configurations[:production] = {
+    :adapter  => uri.scheme,
+    :host     => uri.host,
+    :port     => uri.port,
+    :prefix   => prefix, # database name or prefix
+    :suffix   => nil,
+    :join     => '_',
+    :username => uri.user,
+    :password => uri.password
+  }
+end
 
 # Setup our logger
 ActiveRecord::Base.logger = logger

@@ -12,8 +12,8 @@ gem "rack-less"
 gem "rake"
 gem "sinatra-flash", :require => "sinatra/flash"
 
-# Padrino Stable Gem
-gem "padrino", "0.10.5"
+# Padrino
+gem "padrino", :git => "https://github.com/padrino/padrino-framework.git"
 
 # Database
 group :production do

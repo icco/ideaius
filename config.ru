@@ -6,6 +6,7 @@
 
 a = File.expand_path("../config/boot.rb", __FILE__)
 p a
+p __FILE__
 require a
 
 run Padrino.application

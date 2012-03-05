@@ -13,4 +13,8 @@ Ideaus.controllers :idea do
     ideas = Idea.all
     render "idea/index", :locals => { :ideas => ideas }
   end
+
+  get :new do
+    render 'idea/new'
+  end
 end

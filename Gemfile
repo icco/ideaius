@@ -1,6 +1,6 @@
 source :rubygems
 
-gem "activerecord", :require => "active_record"
+gem "activerecord", "3.0.10", :require => "active_record"
 gem "erubis", "~> 2.7.0"
 gem "json"
 gem "multi_json"

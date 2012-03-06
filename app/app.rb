@@ -35,3 +35,5 @@ class Ideaus < Padrino::Application
   # set :show_exceptions, true    # Shows a stack trace in browser (default for development)
   # set :logging, true            # Logging in STDOUT for development and file for production (default only for development)
 end
+
+puts "in app.rb"

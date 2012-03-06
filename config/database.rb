@@ -12,18 +12,18 @@ prefix = "ideaus"
 #  :database => Padrino.root('db', "#{prefix}_test.db")
 #}
 #
-if ENV['DATABASE_URL'] && uri = URI.parse(ENV['DATABASE_URL'])
-  ActiveRecord::Base.configurations[:production] = {
-    :adapter  => uri.scheme,
-    :host     => uri.host,
-    :port     => uri.port,
-    :prefix   => prefix, # database name or prefix
-    :suffix   => nil,
-    :join     => '_',
-    :username => uri.user,
-    :password => uri.password
-  }
-end
+#if ENV['DATABASE_URL'] && uri = URI.parse(ENV['DATABASE_URL'])
+#  ActiveRecord::Base.configurations[:production] = {
+#    :adapter  => uri.scheme,
+#    :host     => uri.host,
+#    :port     => uri.port,
+#    :prefix   => prefix, # database name or prefix
+#    :suffix   => nil,
+#    :join     => '_',
+#    :username => uri.user,
+#    :password => uri.password
+#  }
+#end
 
 # Setup our logger
 ActiveRecord::Base.logger = logger

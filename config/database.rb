@@ -2,16 +2,16 @@
 # Database config
 prefix = "ideaus"
 
-ActiveRecord::Base.configurations[:development] = {
-  :adapter => 'sqlite3',
-  :database => Padrino.root('db', "#{prefix}_development.db")
-}
-
-ActiveRecord::Base.configurations[:test] = {
-  :adapter => 'sqlite3',
-  :database => Padrino.root('db', "#{prefix}_test.db")
-}
-
+#ActiveRecord::Base.configurations[:development] = {
+#  :adapter => 'sqlite3',
+#  :database => Padrino.root('db', "#{prefix}_development.db")
+#}
+#
+#ActiveRecord::Base.configurations[:test] = {
+#  :adapter => 'sqlite3',
+#  :database => Padrino.root('db', "#{prefix}_test.db")
+#}
+#
 if ENV['DATABASE_URL'] && uri = URI.parse(ENV['DATABASE_URL'])
   ActiveRecord::Base.configurations[:production] = {
     :adapter  => uri.scheme,
@@ -42,4 +42,8 @@ ActiveSupport.use_standard_json_time_format = true
 ActiveSupport.escape_html_entities_in_json = false
 
 # Now we can estabilish connection with our db
-ActiveRecord::Base.establish_connection(ActiveRecord::Base.configurations[Padrino.env])
+p ActiveRecord::Base.configurations
+p Padrino.env
+if ActiveRecord::Base.configurations[Padrino.env]
+  ActiveRecord::Base.establish_connection(ActiveRecord::Base.configurations[Padrino.env])
+end

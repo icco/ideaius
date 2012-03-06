@@ -4,8 +4,6 @@ class Ideaus < Padrino::Application
   register Padrino::Mailer
   register Padrino::Helpers
 
-  enable :sessions
-
   use Rack::Session::Cookie
   use OmniAuth::Builder do
     provider :developer if PADRINO_ENV == "development"

@@ -5,7 +5,7 @@ prefix = "ideaus"
 connections = {
   :development => "sqlite://#{Padrino.root('db', "#{prefix}_development.db")}",
   :test => "sqlite://#{Padrino.root('db', "#{prefix}_test.db")}",
-  :production = ENV['DATABASE_URL']
+  :production => ENV['DATABASE_URL']
 }
 
 # Setup our logger

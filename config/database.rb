@@ -3,8 +3,8 @@
 prefix = "ideaus"
 
 connections = {
-  :development => "sqlite://#{Padrino.root('db', "#{prefix}_development.db")}",
-  :test => "sqlite://#{Padrino.root('db', "#{prefix}_test.db")}",
+  :development => "sqlite://db/#{prefix}_development.db",
+  :test => "sqlite://db/#{prefix}_test.db",
   :production => ENV['DATABASE_URL']
 }
 
@@ -26,7 +26,24 @@ ActiveSupport.escape_html_entities_in_json = false
 
 # Now we can estabilish connection with our db
 if connections[Padrino.env]
-  ActiveRecord::Base.establish_connection(connections[Padrino.env])
+  url = URI(connections[Padrino.env])
+  options = {
+    :adapter => url.scheme,
+    :host => url.host,
+    :port => url.port,
+    :database => url.path[1..-1],
+    :username => url.user,
+    :password => url.password
+  }
+  case url.scheme
+  when "sqlite"
+    options[:adapter] = "sqlite3"
+    options[:database] = url.host + url.path
+  when "postgres"
+    options[:adapter] = "postgresql"
+  end
+  p options, url
+  ActiveRecord::Base.establish_connection(options)
 else
   puts "No database configuration for #{Padrino.env.inspect}"
 end

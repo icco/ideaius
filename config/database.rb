@@ -2,28 +2,11 @@
 # Database config
 prefix = "ideaus"
 
-ActiveRecord::Base.configurations[:development] = {
-  :adapter => 'sqlite3',
-  :database => Padrino.root('db', "#{prefix}_development.db")
+connections = {
+  :development => "sqlite://#{Padrino.root('db', "#{prefix}_development.db")}",
+  :test => "sqlite://#{Padrino.root('db', "#{prefix}_test.db")}",
+  :production = ENV['DATABASE_URL']
 }
-
-ActiveRecord::Base.configurations[:test] = {
-  :adapter => 'sqlite3',
-  :database => Padrino.root('db', "#{prefix}_test.db")
-}
-
-if ENV['DATABASE_URL'] && uri = URI.parse(ENV['DATABASE_URL'])
-  ActiveRecord::Base.configurations[:production] = {
-    :adapter  => uri.scheme,
-    :host     => uri.host,
-    :port     => uri.port,
-    :prefix   => prefix, # database name or prefix
-    :suffix   => nil,
-    :join     => '_',
-    :username => uri.user,
-    :password => uri.password
-  }
-end
 
 # Setup our logger
 ActiveRecord::Base.logger = logger
@@ -42,7 +25,8 @@ ActiveSupport.use_standard_json_time_format = true
 ActiveSupport.escape_html_entities_in_json = false
 
 # Now we can estabilish connection with our db
-p ActiveRecord::Base.configurations[Padrino.env]
-if ActiveRecord::Base.configurations[Padrino.env]
-  ActiveRecord::Base.establish_connection(ActiveRecord::Base.configurations[Padrino.env])
+if connections[Padrino.env]
+  ActiveRecord::Base.establish_connection(connections[Padrino.env])
+else
+  puts "No database configuration for #{Padrino.env.inspect}"
 end

@@ -42,7 +42,10 @@ if connections[Padrino.env]
   when "postgres"
     options[:adapter] = "postgresql"
   end
-  p options, url
+
+  # Log what we are connecting to.
+  logger.push "DB: #{options.inspect}", :devel
+
   ActiveRecord::Base.establish_connection(options)
 else
   puts "No database configuration for #{Padrino.env.inspect}"

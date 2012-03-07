@@ -24,7 +24,18 @@ Ideaus.controllers :auth do
     auth = request.env['omniauth.auth']
     logger.push("Twitter: #{auth.inspect}", :devel)
 
-    auth.inspect
+    user = User.find_by_github auth['screen_name']
+
+    if user.nil?
+      user = User.new
+      user.twitter = auth['screen_name']
+    end
+
+    user.save # this could be all bad.
+
+    session[:user] = user.id
+
+    redirect '/'
   end
 
   # Github callback

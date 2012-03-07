@@ -4,6 +4,7 @@ Ideaus.controllers :idea do
   post :index do
     i = Idea.new
     i.text = params["idea"]
+    i.users_id = session[:user]
     i.save
 
     redirect "/idea/"

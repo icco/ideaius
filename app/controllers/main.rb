@@ -15,4 +15,12 @@ Ideaus.controller do
     session[:user] = nil
     redirect '/'
   end
+
+  get '/:username' do
+    # get user profile page.
+  end
+
+  get '/:username/:project' do
+    # get project page
+  end
 end

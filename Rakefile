@@ -4,6 +4,10 @@ require 'padrino-core/cli/rake'
 
 PadrinoTasks.init
 
+task :local do
+  Kernel.exec("bundle exec shotgun")
+end
+
 namespace :ar do
   namespace :migrate do
     task :new do

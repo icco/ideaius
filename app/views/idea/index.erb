@@ -1,5 +1,5 @@
 <ul>
   <% ideas.each do |idea| %>
-    <li><%= idea.text %></li>
+    <li><%= escape_html(idea.text) %></li>
   <% end %>
 </ul>

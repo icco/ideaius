@@ -16,11 +16,11 @@ Ideaus.controller do
     redirect '/'
   end
 
-  get '/:username' do
-    # get user profile page.
-  end
+  #get '/:username' do
+  #  # get user profile page.
+  #end
 
-  get '/:username/:project' do
-    # get project page
-  end
+  #get '/:username/:project' do
+  #  # get project page
+  #end
 end

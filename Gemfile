@@ -9,7 +9,6 @@ gem "omniauth-twitter" # https://github.com/arunagw/omniauth-twitter
 gem "rack", "~> 1.4.1"
 gem "rack-less"
 gem "rake"
-#gem "sinatra-activerecord", :require => "sinatra/activerecord"
 gem "sinatra-flash", :require => "sinatra/flash"
 
 # Padrino

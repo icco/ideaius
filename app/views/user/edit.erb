@@ -1,0 +1,6 @@
+
+<%= form_tag '/user/edit', :method => 'post' do
+   p flash_tag(:notice)
+   p text_field_tag(:username)
+   p submit_tag
+end %>

@@ -1,6 +1,17 @@
+<% form_tag url(:user, :edit), :method => 'post' do %>
+  <%= flash_tag :notice %>
 
-<%= form_tag '/user/edit', :method => 'post' do
-   p flash_tag(:notice)
-   p text_field_tag(:username)
-   p submit_tag
-end %>
+  <%= label_tag :username %>
+  <%= text_field_tag :username %>
+
+  <%= label_tag :email %>
+  <%= text_field_tag :email %>
+
+  <%= label_tag :github %>
+  <%= text_field_tag :github %>
+
+  <%= label_tag :twitter %>
+  <%= text_field_tag :twitter %>
+
+  <%= submit_tag %>
+<% end %>

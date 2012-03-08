@@ -8,4 +8,8 @@ Ideaus.controllers :user do
 
     render 'user/edit', :locals => { :user => User.find_by_id(session[:user]) }
   end
+
+  post :edit do
+    params.to_json
+  end
 end

@@ -1,17 +1,27 @@
 <% form_tag url(:user, :edit), :method => 'post' do %>
   <%= flash_tag :notice %>
 
-  <%= label_tag :username %>
+  <p>
+  <%= label_tag :username %><br />
   <%= text_field_tag :username, :value => user.username %>
+  </p>
 
-  <%= label_tag :email %>
+  <p>
+  <%= label_tag :email %><br />
   <%= text_field_tag :email, :value => user.email %>
+  </p>
 
-  <%= label_tag :github %>
+  <p>
+  <%= label_tag :github %><br />
   <%= text_field_tag :github, :value => user.github %>
+  </p>
 
-  <%= label_tag :twitter %>
+  <p>
+  <%= label_tag :twitter %><br />
   <%= text_field_tag :twitter, :value => user.twitter %>
+  </p>
 
+  <p>
   <%= submit_tag %>
+  </p>
 <% end %>

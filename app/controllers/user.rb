@@ -2,14 +2,20 @@ Ideaus.controllers :user do
   layout :main
 
   get :edit do
-    if !session[:user]
-      redirect '/user/new'
-    end
+    user = logged_in!
 
-    render 'user/edit', :locals => { :user => User.find_by_id(session[:user]) }
+    render 'user/edit', :locals => { :user => user }
   end
 
   post :edit do
-    params.to_json
+    user = logged_in!
+
+    user.username = params["username"]
+    user.email = params["email"]
+    user.github = params["github"]
+    user.twitter = params["twitter"]
+    user.save
+
+    redirect url(:user, :edit)
   end
 end

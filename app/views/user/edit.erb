@@ -2,16 +2,16 @@
   <%= flash_tag :notice %>
 
   <%= label_tag :username %>
-  <%= text_field_tag :username %>
+  <%= text_field_tag :username, :value => user.username %>
 
   <%= label_tag :email %>
-  <%= text_field_tag :email %>
+  <%= text_field_tag :email, :value => user.email %>
 
   <%= label_tag :github %>
-  <%= text_field_tag :github %>
+  <%= text_field_tag :github, :value => user.github %>
 
   <%= label_tag :twitter %>
-  <%= text_field_tag :twitter %>
+  <%= text_field_tag :twitter, :value => user.twitter %>
 
   <%= submit_tag %>
 <% end %>

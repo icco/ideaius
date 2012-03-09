@@ -11,11 +11,15 @@ Ideaus.controllers :idea do
   end
 
   get :index do
+    user = logged_in!
+
     ideas = Idea.all
-    render "idea/index", :locals => { :ideas => ideas }
+    render "idea/index", :locals => { :ideas => ideas, :user => user }
   end
 
   get :new do
-    render 'idea/new'
+    user = logged_in!
+
+    render 'idea/new', :locals => { :user => user }
   end
 end

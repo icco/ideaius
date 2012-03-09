@@ -5,12 +5,13 @@ Ideaus.controllers :auth do
     auth = request.env['omniauth.auth']
     logger.push("Developer: #{auth.inspect}", :devel)
 
-    email = params["email"]
+    email = auth["email"]
     user = User.findByEmail email
 
     if user.nil?
       user = User.new
       user.email = email
+      user.username = auth["name"]
       user.save
     end
 
@@ -28,6 +29,10 @@ Ideaus.controllers :auth do
 
     if user.nil?
       user = User.new
+      user.username = auth['screen_name']
+    end
+
+    if user.twitter.nil?
       user.twitter = auth['screen_name']
     end
 
@@ -49,6 +54,7 @@ Ideaus.controllers :auth do
     if user.nil?
       user = User.new
       user.email = auth['email']
+      user.username = auth['nickname']
     end
 
     if user.github.nil?

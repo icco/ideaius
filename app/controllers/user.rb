@@ -1,6 +1,10 @@
 Ideaus.controllers :user do
   layout :main
 
+  get :new do
+    redirect '/'
+  end
+
   get :edit do
     user = logged_in!
 

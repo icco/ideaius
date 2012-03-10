@@ -44,7 +44,7 @@ if connections[Padrino.env]
   end
 
   # Log what we are connecting to.
-  logger.push "DB: #{options.inspect}", :devel
+  logger.push " DB: #{options.inspect}", :devel
 
   ActiveRecord::Base.establish_connection(options)
 else

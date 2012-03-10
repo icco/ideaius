@@ -3,10 +3,13 @@ Ideaus.controllers :auth do
   # For development testing
   post '/developer/callback' do
     auth = request.env['omniauth.auth']
-    logger.push("Developer: #{auth.inspect}", :devel)
+    auth = auth.info
+    logger.push(" Developer: #{auth.inspect}", :devel)
+    p auth["email"]
 
     email = auth["email"]
     user = User.findByEmail email
+    p user
 
     if user.nil?
       user = User.new
@@ -23,7 +26,7 @@ Ideaus.controllers :auth do
   # Twitter Callback
   get '/twitter/callback' do
     auth = request.env['omniauth.auth']
-    logger.push("Twitter: #{auth.inspect}", :devel)
+    logger.push(" Twitter: #{auth.inspect}", :devel)
 
     user = User.find_by_github auth['screen_name']
 
@@ -46,7 +49,7 @@ Ideaus.controllers :auth do
   # Github callback
   get '/github/callback' do
     auth = request.env['omniauth.auth']
-    logger.push("Github: #{auth.inspect}", :devel)
+    logger.push(" Github: #{auth.inspect}", :devel)
 
     user = User.find_by_github auth['nickname']
     user = User.find_by_email auth['email'] if user.nil?

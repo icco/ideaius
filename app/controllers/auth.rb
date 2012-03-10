@@ -26,17 +26,18 @@ Ideaus.controllers :auth do
   # Twitter Callback
   get '/twitter/callback' do
     auth = request.env['omniauth.auth']
+    auth = auth.info
     logger.push(" Twitter: #{auth.inspect}", :devel)
 
-    user = User.find_by_github auth['screen_name']
+    user = User.find_by_github auth['nickname']
 
     if user.nil?
       user = User.new
-      user.username = auth['screen_name']
+      user.username = auth['nickname']
     end
 
     if user.twitter.nil?
-      user.twitter = auth['screen_name']
+      user.twitter = auth['nickname']
     end
 
     user.save # this could be all bad.
@@ -49,6 +50,7 @@ Ideaus.controllers :auth do
   # Github callback
   get '/github/callback' do
     auth = request.env['omniauth.auth']
+    auth = auth.info
     logger.push(" Github: #{auth.inspect}", :devel)
 
     user = User.find_by_github auth['nickname']

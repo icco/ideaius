@@ -1,9 +1,7 @@
-# Everything located at /
-
 Ideaus.controller do
   layout :main
 
-  get '/' do
+  get :index do
     if session[:user]
       redirect '/idea/new'
     else
@@ -22,7 +20,7 @@ Ideaus.controller do
     # get user profile page.
     user = logged_in!
 
-    page_user = User.find_by_username(params['username'])
+    page_user = User.find_by_username(params[:username])
     if page_user
       ideas = Idea.where(:users_id => page_user.id)
       render "idea/index", :locals => { :ideas => ideas, :user => user }

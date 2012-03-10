@@ -2,12 +2,14 @@ Ideaus.controllers :idea do
   layout :main
   
   post :new do
+    user = logged_in!
+
     i = Idea.new
     i.text = params["idea"]
-    i.users_id = session[:user]
+    i.users_id = user.id
     i.save
 
-    redirect "/idea/"
+    redirect "/#{user.username}"
   end
 
   get :new do

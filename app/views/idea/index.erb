@@ -1,5 +1,7 @@
 <ul>
-  <% ideas.each do |idea| %>
+  <% if ideas.each do |idea| %>
     <li><%= escape_html(idea.text) %></li>
+  <% end.empty? %>
+    No ideas yet! <a href="<%= url(:idea, :new) %>">Create one!</a>
   <% end %>
 </ul>

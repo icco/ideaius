@@ -16,8 +16,9 @@ Ideaus.controller do
     redirect '/'
   end
 
-  # TODO: figure out how to do non-catchall routes...
-  get '/:username' do
+  # NOTE: Low priority makes it so other things run before us.
+  # http://www.padrinorb.com/guides/controllers#prioritized-routes
+  get '/:username', :priority => :low do
     # get user profile page.
     user = logged_in!
 
@@ -30,7 +31,7 @@ Ideaus.controller do
     end
   end
 
-  get '/:username/:project' do
+  get '/:username/:project', :priority => :low do
     # get project page
     page_user = User.find_by_username(params['username'])
     Idea.where(:users_id => page_user.id, :name => params['project']).to_json

@@ -6,7 +6,7 @@ Ideaus.controllers :idea do
 
     i = Idea.new
     i.text = params["idea"]
-    i.users_id = user.id
+    i.user_id = user.id
     i.save
 
     redirect "/#{user.username}"

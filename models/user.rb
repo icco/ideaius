@@ -1,6 +1,10 @@
 class User < ActiveRecord::Base
   has_many :ideas
 
+  def to_s
+    return self.username
+  end
+
   def self.findByEmail email
     where("email = ?", email).first
   end

@@ -22,7 +22,7 @@ Ideaus.controller do
 
     page_user = User.find_by_username(params[:username])
     if page_user
-      ideas = Idea.where(:users_id => page_user.id)
+      ideas = Idea.where(:user_id => page_user.id)
       render "idea/index", :locals => { :ideas => ideas, :user => user }
     else
       404
@@ -32,6 +32,6 @@ Ideaus.controller do
   get '/:username/:project', :priority => :low do
     # get project page
     page_user = User.find_by_username(params['username'])
-    Idea.where(:users_id => page_user.id, :name => params['project']).to_json
+    Idea.where(:user_id => page_user.id, :name => params['project']).to_json
   end
 end

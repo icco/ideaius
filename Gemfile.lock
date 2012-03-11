@@ -39,7 +39,7 @@ GEM
     json (1.6.5)
     launchy (2.0.5)
       addressable (~> 2.2.6)
-    less (2.0.9)
+    less (2.0.10)
       commonjs (~> 0.2.0)
       therubyracer (~> 0.9.9)
     libv8 (3.3.10.4)

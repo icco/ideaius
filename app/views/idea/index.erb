@@ -1,6 +1,6 @@
 <ul>
   <% if ideas.each do |idea| %>
-    <li><%= escape_html(idea.text) %></li>
+    <li><a href="<%= "/#{idea.users_id}/#{idea.name}/" %>"><%= idea.users_id %>/<%= idea.name %></a>: <%= escape_html(idea.text) %></li>
   <% end.empty? %>
     No ideas yet! <a href="<%= url(:idea, :new) %>">Create one!</a>
   <% end %>

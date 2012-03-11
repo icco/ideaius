@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  has_many :ideas
+
   def self.findByEmail email
     where("email = ?", email).first
   end

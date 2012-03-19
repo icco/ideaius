@@ -16,11 +16,13 @@ Ideaus.controller do
 
   # NOTE: Low priority makes it so other things run before us.
   # http://www.padrinorb.com/guides/controllers#prioritized-routes
-  get '/:username', :priority => :low do
+  get %r{/(\S+)/?}, :priority => :low do
     # get user profile page.
     user = logged_in!
 
-    page_user = User.find_by_username(params[:username])
+    username =  params[:captures][0].gsub('/', '')
+
+    page_user = User.find_by_username(username)
     if page_user
       ideas = Idea.where(:user_id => page_user.id)
 
@@ -33,15 +35,18 @@ Ideaus.controller do
     end
   end
 
-  # TODO: This route is broken...
-  get '/', :with => [ :username, :project ], :priority => :low do
+  get %r{/(\S+)/(\S+)/?}, :priority => :low do
+    user = logged_in!
+
     p params
+    username = params[:captures][0]
+    project =  params[:captures][1].gsub('/', '')
 
     # get project page
-    page_user = User.find_by_username(params[:username])
+    page_user = User.find_by_username(username)
 
     if !page_user.nil?
-      Idea.where(:user_id => page_user.id, :name => params[:project]).to_json
+      Idea.where(:user_id => page_user.id, :name => project).to_json
     else
       404
     end

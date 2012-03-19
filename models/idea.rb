@@ -1,7 +1,11 @@
 class Idea < ActiveRecord::Base
   belongs_to :user
 
-  def name
-    return super.nil? ? self.id : super
+  def save
+    if self.name.nil?
+      self.name = self.text[0..10].gsub(%r{\s}, '-')
+    end
+
+    return super
   end
 end

@@ -23,15 +23,27 @@ Ideaus.controller do
     page_user = User.find_by_username(params[:username])
     if page_user
       ideas = Idea.where(:user_id => page_user.id)
+
+      # Auto generate name field
+      ideas.each {|i| if i.name.nil? then i.save end }
+
       render "idea/index", :locals => { :ideas => ideas, :user => user }
     else
       404
     end
   end
 
-  get '/:username/:project', :priority => :low do
+  # TODO: This route is broken...
+  get '/', :with => [ :username, :project ], :priority => :low do
+    p params
+
     # get project page
-    page_user = User.find_by_username(params['username'])
-    Idea.where(:user_id => page_user.id, :name => params['project']).to_json
+    page_user = User.find_by_username(params[:username])
+
+    if !page_user.nil?
+      Idea.where(:user_id => page_user.id, :name => params[:project]).to_json
+    else
+      404
+    end
   end
 end

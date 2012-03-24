@@ -16,7 +16,7 @@ Ideaus.controller do
 
   # NOTE: Low priority makes it so other things run before us.
   # http://www.padrinorb.com/guides/controllers#prioritized-routes
-  get %r{/(\S+)/?}, :priority => :low do
+  get %r{/(\w+)/?}, :priority => :low do
     # get user profile page.
     user = logged_in!
 
@@ -35,7 +35,7 @@ Ideaus.controller do
     end
   end
 
-  get %r{/(\S+)/(\S+)/?}, :priority => :low do
+  get %r{/(\w+)/(\S+)/?}, :priority => :low do
     user = logged_in!
 
     p params

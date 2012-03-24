@@ -14,6 +14,9 @@ Ideaus.controller do
     redirect '/'
   end
 
+  # This is for all user pages. We keep it here instead of the user controller
+  # because we want to have them at / not /user/
+  #
   # NOTE: Low priority makes it so other things run before us.
   # http://www.padrinorb.com/guides/controllers#prioritized-routes
   get %r{/(\w+)/?}, :priority => :low do
@@ -35,6 +38,8 @@ Ideaus.controller do
     end
   end
 
+  # This is for all user ideas. We keep them here because we don't want them to
+  # be at /idea/
   get %r{/(\w+)/(\S+)/?}, :priority => :low do
     user = logged_in!
 

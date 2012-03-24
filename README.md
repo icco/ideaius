@@ -14,7 +14,7 @@ Simply, this is a site to compete with Google Docs or 37Signals' suite of produc
 Follow a mixture between GitHub and Pinboard
 
  * Pinboard: One time fee of (number of users * $0.001)
- * Github: 
+ * Github:
 
 ![github pricing](http://f.cl.ly/items/3I2e0Y1244251l081u0c/Screen%20Shot%202012-03-24%20at%2013.50.40%20.png)
 
@@ -31,3 +31,14 @@ Follow a mixture between GitHub and Pinboard
     * same drive as mike
     * has money-ish
     * wants something that can grow with her business
+
+## TODO
+
+ * Authentication
+   * Set up a better way to pre-authenticate on pages.
+   * ...
+ * Whiteboard
+   * record x,y coordinates and atributes. Timesorted is important if we have different colors...
+   * Decide on a box size so that we can have individually rendered pieces.
+ * Wiki
+ * API

@@ -38,17 +38,19 @@ Ideaus.controller do
   get %r{/(\w+)/(\S+)/?}, :priority => :low do
     user = logged_in!
 
-    p params
     username = params[:captures][0]
     project =  params[:captures][1].gsub('/', '')
 
     # get project page
     page_user = User.find_by_username(username)
-
     if !page_user.nil?
-      Idea.where(:user_id => page_user.id, :name => project).to_json
-    else
-      404
+      @idea = Idea.where(:user_id => page_user.id, :name => project).first
+      if !@idea.nil?
+        return render "idea/front", :locals => { :user => user }
+      end
     end
+
+    # In all other cases. 404 This bitch.
+    404
   end
 end

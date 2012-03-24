@@ -3,7 +3,7 @@ class Idea < ActiveRecord::Base
 
   def save
     if self.name.nil?
-      self.name = self.text[0..10].gsub(%r{\s}, '-')
+      self.name = self.text[0..10].gsub(%r{\s}, '-').downcase
     end
 
     return super

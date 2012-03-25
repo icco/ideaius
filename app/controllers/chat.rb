@@ -11,6 +11,6 @@ Ideaus.controllers :chat do
     idea = Idea.find_by_id(params['idea'])
     text = params['text']
 
-    return { :text => text, :idea => idea, :user => user }.to_json
+    return { :text => text, :idea => idea, :user => user, :time => Time.now }.to_json
   end
 end

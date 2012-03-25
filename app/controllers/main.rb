@@ -41,7 +41,7 @@ Ideaus.controller do
   # This is for all user ideas. We keep them here because we don't want them to
   # be at /idea/
   get %r{/(\w+)/(\S+)/?}, :priority => :low do
-    user = logged_in!
+    @user = user = logged_in!
 
     username = params[:captures][0]
     project =  params[:captures][1].gsub('/', '')

@@ -4,12 +4,18 @@ require 'padrino-core/cli/rake'
 
 PadrinoTasks.init
 
+desc "Run a local server."
 task :local do
   Kernel.exec("bundle exec shotgun")
 end
 
+task :default do
+  puts "THERE IS NO DEFAULT!"
+end
+
 namespace :ar do
   namespace :migrate do
+    desc "Create a new db migration."
     task :new do
       # YYYYMMDDHHMMSS_create_products.rb
       date = Time.now.strftime("%Y%m%d%H%M%S")

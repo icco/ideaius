@@ -27,7 +27,7 @@ Ideaus.controller do
 
     page_user = User.find_by_username(username)
     if page_user
-      "<pre>#{page_user.inspect}</pre>"
+      render "user/index"
     else
       404
     end
@@ -42,7 +42,7 @@ Ideaus.controller do
 
     # get project page
     page_user = User.find_by_username(topic_owner)
-    if !page_user.nil?
+    if page_user
       @topic = Topic.where(:user_id => page_user.id, :name => topic_name).first
 
       if @topic.nil? and topic_name == "default"
@@ -53,8 +53,8 @@ Ideaus.controller do
         @topic.save
       end
 
-      if !@topic.nil?
-        render 'topic/topic', :locals => { }
+      if @topic
+        render "topic/index", :locals => { }
       end
     end
 

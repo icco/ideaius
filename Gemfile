@@ -15,6 +15,7 @@ gem "sinatra-flash", :require => "sinatra/flash"
 gem "padrino"
 
 # Database
+gem "redis"
 group :production do
   gem "pg"
 end

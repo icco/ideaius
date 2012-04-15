@@ -14,5 +14,4 @@ class Ideaus < Padrino::Application
   set :show_exceptions, true
 
   use Rack::Lint
-
 end

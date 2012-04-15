@@ -3,7 +3,7 @@ Ideaus.controller do
 
   get :index do
     if session[:user]
-      redirect '/idea/new'
+      redirect "/#{session[:user]}"
     else
       render :index
     end
@@ -20,28 +20,21 @@ Ideaus.controller do
   # NOTE: Low priority makes it so other things run before us.
   # http://www.padrinorb.com/guides/controllers#prioritized-routes
   get %r{/(\w+)/?}, :priority => :low do
-    # get user profile page.
-    user = logged_in!
+    @user = logged_in!
 
     username =  params[:captures][0].gsub('/', '')
 
     page_user = User.find_by_username(username)
     if page_user
-      ideas = Idea.where(:user_id => page_user.id)
-
-      # Auto generate name field
-      ideas.each {|i| if i.name.nil? then i.save end }
-
-      render "idea/index", :locals => { :ideas => ideas, :user => user }
+      "<pre>#{page_user.inspect}</pre>"
     else
       404
     end
   end
 
-  # This is for all user ideas. We keep them here because we don't want them to
-  # be at /idea/
+  # This is for all user topics. We keep them here because we don't want them to be at /topic/
   get %r{/(\w+)/(\S+)/?}, :priority => :low do
-    @user = user = logged_in!
+    @user = logged_in!
 
     username = params[:captures][0]
     project =  params[:captures][1].gsub('/', '')
@@ -49,9 +42,9 @@ Ideaus.controller do
     # get project page
     page_user = User.find_by_username(username)
     if !page_user.nil?
-      @idea = Idea.where(:user_id => page_user.id, :name => project).first
-      if !@idea.nil?
-        return render "idea/front", :locals => { :user => user }
+      @topic = Topic.where(:user_id => page_user.id, :name => project).first
+      if !@topic.nil?
+        "<pre>#{@topic.inspect}</pre>"
       end
     end
 

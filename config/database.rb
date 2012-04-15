@@ -1,5 +1,5 @@
 ##
-# Database config
+# Database config for relational db.
 prefix = "ideaus"
 
 connections = {

@@ -45,7 +45,7 @@ Ideaus.controller do
     if !page_user.nil?
       @topic = Topic.where(:user_id => page_user.id, :name => topic_name).first
 
-      if @topic.nil? and topic_name = "default"
+      if @topic.nil? and topic_name == "default"
         @topic = Topic.new
         @topic.name = "default"
         @topic.user_id = page_user.id
@@ -54,11 +54,10 @@ Ideaus.controller do
       end
 
       if !@topic.nil?
-        render 'topic/topic'
+        render 'topic/topic', :locals => { }
       end
     end
 
-    # In all other cases. 404 This bitch.
-    404
+    404 # In all other cases. 404 This bitch.
   end
 end

@@ -8,7 +8,7 @@ Ideaus.controllers :user do
   get :edit do
     @user = logged_in!
 
-    render 'user/edit', :locals => { :user => user }
+    render 'user/edit', :locals => { }
   end
 
   post :edit do

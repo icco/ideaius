@@ -3,7 +3,8 @@ Ideaus.controller do
 
   get :index do
     if session[:user]
-      redirect "/#{session[:user]}"
+      @user = User.find_by_id session[:user]
+      redirect "/#{@user.username}"
     else
       render :index
     end

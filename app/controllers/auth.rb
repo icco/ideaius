@@ -8,7 +8,7 @@ Ideaus.controllers :auth do
     p auth["email"]
 
     email = auth["email"]
-    user = User.findByEmail email
+    user = User.find_by_email email
     p user
 
     if user.nil?

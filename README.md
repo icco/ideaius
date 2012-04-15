@@ -1,6 +1,18 @@
 # stackus
 
-I built a site awhile back called the_stack. It was a very simple way to take notes in a web browser
-and save them to Amazon's SDB.
+Forkable chatrooms.
 
-What I'm building here is a new approach to that idea. I want every idea to be a chat room.
+## Data design
+
+This is going to be incredibly read heavy. Data design might be similar to Twitter lists... but not really.
+
+  * Write once objects
+    * Messages - text, user who posted them, timestamps, unique id
+  * Update on occasion
+    * Users - username, timestamps, password, email
+    * topics - private, name, owner, other meta
+  * Write a lot
+    * Join table / association between Messages and Topics.
+      * I could just duplicate the messages when forking to another topic, but it'd be nice to have some sort of relation between the new and old topic.
+      * Megastore equivalent in Ruby?
+      * Redis?

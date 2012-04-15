@@ -2,6 +2,12 @@
 
 Forkable chatrooms.
 
+## MVP
+
+ * Ability to post messages to a topic
+ * Ability to select messages and create a new topic with the selected messages
+ * Ability to post links to images and have them show up inline
+
 ## Data design
 
 This is going to be incredibly read heavy. Data design might be similar to Twitter lists... but not really.

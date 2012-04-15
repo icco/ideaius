@@ -1,0 +1,14 @@
+<h1><%= @topic.user %> / <%= @topic.name %></h1>
+
+<table id="messages">
+</table>
+
+<% form_tag url(:message, :new), :method => 'post' do %>
+  <p>
+  <%= flash_tag :notice %>
+  </p>
+  <p>
+  <%= text_field_tag :text %>
+  <%= submit_tag %>
+  </p>
+<% end %>

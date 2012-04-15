@@ -37,15 +37,24 @@ Ideaus.controller do
   get %r{/(\w+)/(\S+)/?}, :priority => :low do
     @user = logged_in!
 
-    username = params[:captures][0]
-    project =  params[:captures][1].gsub('/', '')
+    topic_owner = params[:captures][0]
+    topic_name  = params[:captures][1].gsub('/', '')
 
     # get project page
-    page_user = User.find_by_username(username)
+    page_user = User.find_by_username(topic_owner)
     if !page_user.nil?
-      @topic = Topic.where(:user_id => page_user.id, :name => project).first
+      @topic = Topic.where(:user_id => page_user.id, :name => topic_name).first
+
+      if @topic.nil? and topic_name = "default"
+        @topic = Topic.new
+        @topic.name = "default"
+        @topic.user_id = page_user.id
+        @topic.private = true
+        @topic.save
+      end
+
       if !@topic.nil?
-        "<pre>#{@topic.inspect}</pre>"
+        render 'topic/topic'
       end
     end
 

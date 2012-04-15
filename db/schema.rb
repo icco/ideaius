@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(:version => 20120415140545) do
     t.string   "email"
     t.string   "github"
     t.string   "twitter"
+    t.string   "username"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

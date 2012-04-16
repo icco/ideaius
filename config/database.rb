@@ -24,8 +24,6 @@ ActiveSupport.use_standard_json_time_format = true
 # if you're including raw json in an HTML page.
 ActiveSupport.escape_html_entities_in_json = false
 
-  p "test 1"
-
 # Now we can estabilish connection with our db
 if connections[Padrino.env]
   url = URI(connections[Padrino.env])
@@ -52,7 +50,6 @@ if connections[Padrino.env]
 else
   logger.push("No database configuration for #{Padrino.env.inspect}", :fatal)
 end
-  p "test 2"
 
 ##
 # Redis Database Config
@@ -63,7 +60,6 @@ redis_connections = {
 }
 
 if redis_connections[Padrino.env]
-  p "test 3"
   options = {
     :adapter => url.scheme,
     :host => url.host,
@@ -72,6 +68,8 @@ if redis_connections[Padrino.env]
     :password => url.password
   }
   REDIS = Redis.new(options)
+
+  logger.push " Redis: #{options.inspect}", :devel
 
   # Test that DB is there, although we'll never get here if Redis server is MIA.
   REDIS.set("server:alive", "yes.")

@@ -60,6 +60,7 @@ redis_connections = {
 }
 
 if redis_connections[Padrino.env]
+  url = URI(redis_connections[Padrino.env])
   options = {
     :adapter => url.scheme,
     :host => url.host,
@@ -67,9 +68,10 @@ if redis_connections[Padrino.env]
     :username => url.user,
     :password => url.password
   }
-  REDIS = Redis.new(options)
 
   logger.push " Redis: #{options.inspect}", :devel
+
+  REDIS = Redis.new(options)
 
   # Test that DB is there, although we'll never get here if Redis server is MIA.
   REDIS.set("server:alive", "yes.")

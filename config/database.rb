@@ -56,7 +56,7 @@ end
 redis_connections = {
   :development => "redis://localhost:6379",
   :test => "redis://localhost:6379",
-  :production => ENV['DATABASE_URL']
+  :production => ENV['REDISTOGO_URL']
 }
 
 if redis_connections[Padrino.env]

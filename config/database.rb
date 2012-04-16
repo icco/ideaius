@@ -48,7 +48,7 @@ if connections[Padrino.env]
 
   ActiveRecord::Base.establish_connection(options)
 else
-  puts "No database configuration for #{Padrino.env.inspect}"
+  logger.push("No database configuration for #{Padrino.env.inspect}", :fatal)
 end
 
 ##
@@ -62,6 +62,10 @@ redis_connections = {
 if redis_connections[Padrino.env]
   uri = URI.parse(redis_connections[Padrino.env])
   REDIS = Redis.new(:host => uri.host, :port => uri.port, :password => uri.password)
+
+  # Test that DB is there, although we'll never get here if Redis server is MIA.
+  REDIS.set("server:alive", "yes.")
+  logger.push("NO REDIS at #{redis_connections[Padrino.env]}", :fatal) if REDIS.get("server:alive") != "yes."
 else
-  puts "No database configuration for #{Padrino.env.inspect}"
+  logger.push("No redis configuration for #{Padrino.env.inspect}", :fatal)
 end

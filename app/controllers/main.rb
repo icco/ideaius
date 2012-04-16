@@ -54,7 +54,7 @@ Ideaus.controller do
       end
 
       if @topic
-        render "topic/index", :locals => { }
+        return render "topic/index", :locals => { }
       end
     end
 

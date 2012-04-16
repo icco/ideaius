@@ -1,4 +1,4 @@
-Ideaus.controllers :user do
+Stackius.controllers :user do
   layout :main
 
   get :new do

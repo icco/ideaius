@@ -1,4 +1,4 @@
-Ideaus.controllers :message do
+Stackius.controllers :message do
   layout :main
 
   post :new do

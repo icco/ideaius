@@ -1,4 +1,4 @@
-Ideaus.controllers :auth do
+Stackius.controllers :auth do
 
   # For development testing
   post '/developer/callback' do

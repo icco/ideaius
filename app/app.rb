@@ -1,4 +1,4 @@
-class Ideaus < Padrino::Application
+class Stackius < Padrino::Application
   register LessInitializer
   register Padrino::Rendering
   register Padrino::Mailer

@@ -1,4 +1,4 @@
-Ideaus.helpers do
+Stackius.helpers do
   def logged_in!
     if !session[:user]
       redirect '/user/new'

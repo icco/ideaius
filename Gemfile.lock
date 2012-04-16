@@ -131,15 +131,15 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord
-  erubis (~> 2.7.0)
+  erubis
   heroku
   json
   multi_json
   omniauth-github
   omniauth-twitter
-  padrino (~> 0.10.6)
+  padrino
   pg
-  rack (~> 1.4.1)
+  rack
   rack-less
   rake
   redis

@@ -1,18 +1,18 @@
 source :rubygems
 
 gem "activerecord", :require => "active_record"
-gem "erubis", "~> 2.7.0"
+gem "erubis"
 gem "json"
 gem "multi_json"
 gem "omniauth-github" # https://github.com/intridea/omniauth-github
 gem "omniauth-twitter" # https://github.com/arunagw/omniauth-twitter
-gem "rack", "~> 1.4.1"
+gem "rack"
 gem "rack-less"
 gem "rake"
 gem "sinatra-flash", :require => "sinatra/flash"
 
 # Padrino
-gem "padrino", "~>  0.10.6"
+gem "padrino"
 
 # Database
 gem "redis"

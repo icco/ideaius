@@ -12,7 +12,7 @@ gem "rake"
 gem "sinatra-flash", :require => "sinatra/flash"
 
 # Padrino
-gem "padrino"
+gem "padrino", "~>  0.10.6"
 
 # Database
 gem "redis"

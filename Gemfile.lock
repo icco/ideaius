@@ -137,7 +137,7 @@ DEPENDENCIES
   multi_json
   omniauth-github
   omniauth-twitter
-  padrino
+  padrino (~> 0.10.6)
   pg
   rack (~> 1.4.1)
   rack-less

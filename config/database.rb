@@ -50,3 +50,18 @@ if connections[Padrino.env]
 else
   puts "No database configuration for #{Padrino.env.inspect}"
 end
+
+##
+# Redis Database Config
+redis_connections = {
+  :development => "redis://localhost:6379",
+  :test => "redis://localhost:6379",
+  :production => ENV['DATABASE_URL']
+}
+
+if redis_connections[Padrino.env]
+  uri = URI.parse(redis_connections[Padrino.env])
+  REDIS = Redis.new(:host => uri.host, :port => uri.port, :password => uri.password)
+else
+  puts "No database configuration for #{Padrino.env.inspect}"
+end

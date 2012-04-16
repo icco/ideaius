@@ -1,14 +1,15 @@
-<h1><%= @topic.user %> / <%= @topic.name %></h1>
+<h1><%= @topic.user %> / <%= @topic %></h1>
 
 <table id="messages">
 </table>
 
 <% form_tag url(:message, :new), :method => 'post' do %>
   <p>
-  <%= flash_tag :notice %>
+    <%= flash_tag :notice %>
   </p>
   <p>
-  <%= text_field_tag :text %>
-  <%= submit_tag %>
+    <%= hidden_field_tag :topic_id, :value => @topic.id %>
+    <%= text_field_tag :text %>
+    <%= submit_tag %>
   </p>
 <% end %>

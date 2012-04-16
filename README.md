@@ -1,4 +1,4 @@
-# stackus
+# stackius
 
 Forkable chatrooms.
 

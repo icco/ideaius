@@ -10,8 +10,8 @@ class Topic < ActiveRecord::Base
     end
 
     REDIS.sadd @key, msg.id
-    p REDIS.smembers @key
-    return REDIS.scard @key
+
+    return true
   end
 
   # Gets most resent messages
@@ -22,6 +22,8 @@ class Topic < ActiveRecord::Base
       max = REDIS.scard @key
       max = 0 if max.nil?
       min = [0, max-count].max
+      p max
+      p min
 
       if min != max
         ids = REDIS.lrange(@key, min, max)

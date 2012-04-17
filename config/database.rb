@@ -53,29 +53,56 @@ end
 
 ##
 # Redis Database Config
-redis_connections = {
-  :development => "redis://localhost:6379",
-  :test => "redis://localhost:6379",
-  :production => ENV['REDISTOGO_URL']
-}
+class RedisConn
+  def initialize
+    self.open
+  end
 
-if redis_connections[Padrino.env]
-  url = URI(redis_connections[Padrino.env])
-  options = {
-    :adapter => url.scheme,
-    :host => url.host,
-    :port => url.port,
-    :username => url.user,
-    :password => url.password
-  }
+  def open
+    redis_connections = {
+      :development => "redis://localhost:6379",
+      :test => "redis://localhost:6379",
+      :production => ENV['REDISTOGO_URL']
+    }
 
-  logger.push " Redis: #{options.inspect}", :devel
+    if redis_connections[Padrino.env]
+      url = URI(redis_connections[Padrino.env])
+      options = {
+        :adapter => url.scheme,
+        :host => url.host,
+        :port => url.port,
+        :username => url.user,
+        :password => url.password
+      }
 
-  REDIS = Redis.new(options)
+      logger.push " Redis: #{options.inspect}", :devel
 
-  # Test that DB is there, although we'll never get here if Redis server is MIA.
-  REDIS.set("server:alive", "yes.")
-  logger.push("NO REDIS at #{redis_connections[Padrino.env]}", :fatal) if REDIS.get("server:alive") != "yes."
-else
-  logger.push("No redis configuration for #{Padrino.env.inspect}", :fatal)
+      @connection = Redis.new(options)
+
+      # Test that DB is there, although we'll never get here if Redis server is MIA.
+      @connection.set("server:alive", "yes.")
+      logger.push("NO REDIS at #{redis_connections[Padrino.env]}", :fatal) if REDIS.get("server:alive") != "yes."
+    else
+      logger.push("No redis configuration for #{Padrino.env.inspect}", :fatal)
+    end
+
+    return @connection
+  end
+
+  def close
+    @connection.quit
+  end
+
+  def multi
+    @connection.open if @connection.nil?
+
+    return @connection
+  end
+
+  def connection
+    self.close
+    self.open
+  end
 end
+
+REDIS = RedisConn.new

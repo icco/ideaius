@@ -9,7 +9,7 @@ class Topic < ActiveRecord::Base
       return false
     end
 
-    REDIS.sadd @key, msg.id
+    REDIS.connection.sadd @key, msg.id
 
     return true
   end
@@ -18,17 +18,19 @@ class Topic < ActiveRecord::Base
   def messages count = 50
     @key = "#{self.user}:#{self}"
 
-    REDIS.multi do
-      max = REDIS.scard @key
+    REDIS.multi.multi do
+      max = REDIS.multi.scard @key
       max = 0 if max.nil?
       min = [0, max-count].max
       p max
       p min
 
       if min != max
-        ids = REDIS.lrange(@key, min, max)
+        ids = REDIS.multi.lrange(@key, min, max)
       end
     end
+    REDIS.close
+
     ids = [] if ids.nil?
 
     p ids

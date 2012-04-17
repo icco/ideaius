@@ -1,6 +1,13 @@
 <h1><%= @topic.user %> / <%= @topic %></h1>
 
 <table id="messages">
+  <% @topic.messages.each do |msg| %>
+    <tr>
+      <td><%= msg.user %></td>
+      <td><%= msg.created_at %></td>
+      <td><%= msg.text %></td>
+    </tr>
+  <% end %>
 </table>
 
 <% form_tag url(:message, :new), :method => 'post' do %>

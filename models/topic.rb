@@ -18,18 +18,17 @@ class Topic < ActiveRecord::Base
   def messages count = 50
     @key = "#{self.user}:#{self}"
 
-    REDIS.multi.multi do
-      max = REDIS.multi.scard @key
+    Stackius.cache.multi do
+      max = Stackius.cache.scard @key
       max = 0 if max.nil?
       min = [0, max-count].max
       p max
       p min
 
       if min != max
-        ids = REDIS.multi.lrange(@key, min, max)
+        ids = Stackius.cache.lrange(@key, min, max)
       end
     end
-    REDIS.close
 
     ids = [] if ids.nil?
 

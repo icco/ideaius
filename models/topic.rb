@@ -9,7 +9,7 @@ class Topic < ActiveRecord::Base
       return false
     end
 
-    REDIS.connection.sadd @key, msg.id
+    Padrino.cache.sadd @key, msg.id
 
     return true
   end
@@ -18,15 +18,15 @@ class Topic < ActiveRecord::Base
   def messages count = 50
     @key = "#{self.user}:#{self}"
 
-    Stackius.cache.multi do
-      max = Stackius.cache.scard @key
+    Padrino.cache.multi do
+      max = Padrino.cache.scard @key
       max = 0 if max.nil?
       min = [0, max-count].max
       p max
       p min
 
       if min != max
-        ids = Stackius.cache.lrange(@key, min, max)
+        ids = Padrino.cache.lrange(@key, min, max)
       end
     end
 

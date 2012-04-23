@@ -12,7 +12,7 @@ gem "rake"
 gem "sinatra-flash", :require => "sinatra/flash"
 
 # Padrino
-gem "padrino"
+gem "padrino", :git => "git://github.com/icco/padrino-framework.git", :branch => "redis-extension"
 
 # Database
 gem "redis"

@@ -3,6 +3,7 @@
 <table id="messages">
   <% @topic.messages.each do |msg| %>
     <tr>
+      <td><%= check_box_tag :message_id, :value => msg.id, :class => 'message_id' %></td>
       <td><%= msg.user %></td>
       <td><%= msg.created_at %></td>
       <td><%= msg.text %></td>

@@ -9,7 +9,7 @@ class Topic < ActiveRecord::Base
       return false
     end
 
-    Padrino.cache.sadd @key, msg.id
+    Padrino.cache.rpush @key, msg.id
 
     return true
   end
@@ -18,16 +18,12 @@ class Topic < ActiveRecord::Base
   def messages count = 50
     @key = "#{self.user}:#{self}"
 
-    Padrino.cache.multi do
-      max = Padrino.cache.scard @key
-      max = 0 if max.nil?
-      min = [0, max-count].max
-      p max
-      p min
+    max = Padrino.cache.llen @key
+    max = 0 if max.nil?
+    min = [0, max-count].max
 
-      if min != max
-        ids = Padrino.cache.lrange(@key, min, max)
-      end
+    if min != max
+      ids = Padrino.cache.lrange(@key, min, max)
     end
 
     ids = [] if ids.nil?

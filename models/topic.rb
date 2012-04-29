@@ -36,8 +36,6 @@ class Topic < ActiveRecord::Base
 
     ids = [] if ids.nil?
 
-    p ids
-
     return Message.where(:id => ids)
   end
 

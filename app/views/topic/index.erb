@@ -1,15 +1,19 @@
 <h1><%= @topic.user %> / <%= @topic %></h1>
 
-<table id="messages">
-  <% @topic.messages.each do |msg| %>
-    <tr>
-      <td><%= check_box_tag :message_id, :value => msg.id, :class => 'message_id' %></td>
-      <td><%= msg.user %></td>
-      <td><%= msg.created_at %></td>
-      <td><%= msg.text %></td>
-    </tr>
-  <% end %>
-</table>
+<% form_tag url(:topic, :fork), :method => 'post' do %>
+  <%= hidden_field_tag :topic_id, :value => @topic.id %>
+  <table id="messages">
+    <% @topic.messages.each do |msg| %>
+      <tr>
+        <td><%= check_box_tag 'message_id[]', :value => msg.id, :class => 'message_id' %></td>
+        <td><%= msg.user %></td>
+        <td><%= msg.created_at %></td>
+        <td><%= msg.text %></td>
+      </tr>
+    <% end %>
+  </table>
+  <%= submit_tag :value => 'fork' %>
+<% end %>
 
 <% form_tag url(:message, :new), :method => 'post' do %>
   <p>

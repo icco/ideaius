@@ -3,13 +3,21 @@ class Topic < ActiveRecord::Base
 
   # In theory, we shouldn't have to block on this function, even though we do.
   def add_message msg
-    @key = "#{self.user}:#{self}"
-
     if msg.nil?
       return false
     end
 
-    Padrino.cache.rpush @key, msg.id
+    return self.add_message_id msg.id
+  end
+
+  def add_message_id id
+    @key = "#{self.user}:#{self}"
+
+    if id.nil?
+      return false
+    end
+
+    Padrino.cache.rpush @key, id
 
     return true
   end

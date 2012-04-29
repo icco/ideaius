@@ -12,7 +12,7 @@
       </tr>
     <% end %>
   </table>
-  <%= submit_tag :value => 'fork' %>
+  <%= submit_tag "Fork" %>
 <% end %>
 
 <% form_tag url(:message, :new), :method => 'post' do %>
@@ -22,6 +22,6 @@
   <p>
     <%= hidden_field_tag :topic_id, :value => @topic.id %>
     <%= text_field_tag :text %>
-    <%= submit_tag %>
+    <%= submit_tag "Post" %>
   </p>
 <% end %>

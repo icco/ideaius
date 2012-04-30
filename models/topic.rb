@@ -42,4 +42,14 @@ class Topic < ActiveRecord::Base
   def to_s
     return self.name
   end
+
+  def name= x
+    super(Topic.filter_name(x))
+  end
+
+  def self.filter_name name
+    return "" if name.nil?
+
+    return name.gsub(%r{\s}, '_').downcase
+  end
 end

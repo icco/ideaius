@@ -1,7 +1,6 @@
 <h1><%= @topic.user %> / <%= @topic %></h1>
 
 <% form_tag url(:topic, :fork), :method => 'post' do %>
-  <%= hidden_field_tag :topic_id, :value => @topic.id %>
   <table id="messages">
     <% @topic.messages.each do |msg| %>
       <tr>
@@ -12,6 +11,9 @@
       </tr>
     <% end %>
   </table>
+
+  <%= hidden_field_tag :topic_id, :value => @topic.id %>
+  <%= text_field_tag :new_topic_name %>
   <%= submit_tag "Fork" %>
 <% end %>
 

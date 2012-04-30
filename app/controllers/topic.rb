@@ -8,6 +8,10 @@ Stackius.controllers :topic do
     new_topic_name = Topic.filter_name params['new_topic_name']
     messages = params["message_id"]
 
+    if messages.nil? or new_topic_name.nil? or messages.empty?
+      redirect "/#{@user.username}/#{old_topic.name}"
+    end
+
     @topic = Topic.where(:user_id => @user.id, :name => new_topic_name).first
     if @topic.nil?
       @topic = Topic.new

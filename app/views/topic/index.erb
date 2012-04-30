@@ -1,4 +1,7 @@
-<h1><%= @topic.user %> / <%= @topic %></h1>
+<h1>
+  <a href="/<%= @topic.user %>"><%= @topic.user %></a> /
+  <a href="/<%= @topic.user %>/<%= @topic %>"><%= @topic %></a>
+</h1>
 
 <% form_tag url(:topic, :fork), :method => 'post' do %>
   <table id="messages">

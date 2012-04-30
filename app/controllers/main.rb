@@ -45,14 +45,6 @@ Stackius.controller do
     if page_user
       @topic = Topic.where(:user_id => page_user.id, :name => topic_name).first
 
-      if @topic.nil? and topic_name == "default"
-        @topic = Topic.new
-        @topic.name = "default"
-        @topic.user_id = page_user.id
-        @topic.private = true
-        @topic.save
-      end
-
       if @topic
         return render "topic/index", :locals => { }
       end

@@ -15,9 +15,11 @@
     <% end %>
   </table>
 
-  <%= hidden_field_tag :topic_id, :value => @topic.id %>
-  <%= text_field_tag :new_topic_name %>
-  <%= submit_tag "Fork" %>
+  <% if !@topic.messages.empty? %>
+    <%= hidden_field_tag :topic_id, :value => @topic.id %>
+    <%= text_field_tag :new_topic_name %>
+    <%= submit_tag "Fork" %>
+  <% end %>
 <% end %>
 
 <% form_tag url(:message, :new), :method => 'post' do %>

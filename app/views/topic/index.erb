@@ -5,11 +5,17 @@
 
 <% form_tag url(:topic, :fork), :method => 'post' do %>
   <table id="messages">
+    <% day = nil %>
     <% @topic.messages.each do |msg| %>
+      <% if day != msg.created_at.strftime('%D') %>
+        <% day = msg.created_at.strftime('%D') %>
+        <tr>
+          <td colspan="3"><%= day %></td>
+        </tr>
+      <% end %>
       <tr>
         <td><%= check_box_tag 'message_id[]', :value => msg.id, :class => 'message_id' %></td>
-        <td><%= msg.user %></td>
-        <td><%= msg.created_at %></td>
+        <td>&lt; <%= msg.user %> <%= msg.created_at.strftime('%T') %> &gt;</td>
         <td><%= msg.text %></td>
       </tr>
     <% end %>

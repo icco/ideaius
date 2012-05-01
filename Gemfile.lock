@@ -1,7 +1,6 @@
 GIT
-  remote: git://github.com/icco/padrino-framework.git
-  revision: 54409cc77acc5639066ee4b1c132ed1725348c3f
-  branch: redis-extension
+  remote: git://github.com/padrino/padrino-framework.git
+  revision: 78329337e6bcaaa15f82639f4569784e6538dfaf
   specs:
     padrino (0.10.6)
       padrino-admin (= 0.10.6)

@@ -14,7 +14,7 @@ gem "sinatra-flash", :require => "sinatra/flash"
 gem "therubyracer"
 
 # Padrino
-gem "padrino", :git => "git://github.com/icco/padrino-framework.git", :branch => "redis-extension"
+gem "padrino", :git => "git://github.com/padrino/padrino-framework.git"
 
 # Database
 gem "redis"

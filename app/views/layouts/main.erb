@@ -1,45 +1,70 @@
 <!doctype html>
-<html>
+<html lang="en">
   <head>
     <title>stackius</title>
+    <meta charset="utf-8">
 
-    <%= favicon_tag 'favicon.ico', :type => 'image/ico' %>
+    <%= favicon_tag "favicon.ico", :type => "image/ico" %>
 
     <!-- Global Assets -->
-    <%= javascript_include_tag 'jquery' %>
-    <%= javascript_include_tag 'application' %>
-    <%= stylesheet_link_tag "http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:400" %>
-    <%= stylesheet_link_tag 'style' %>
+    <%= stylesheet_link_tag "bootstrap" %>
+    <%= stylesheet_link_tag "bootstrap-responsive" %>
+    <%= javascript_include_tag "jquery" %>
+    <%= javascript_include_tag "bootstrap" %>
+
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+    </style>
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <%= javascript_include_tag "http://html5shim.googlecode.com/svn/trunk/html5.js" %>
+    <![endif]-->
 
     <!-- Page specific assets -->
     <%= yield_content :assets %>
   </head>
   <body>
-    <div id="container">
-      <div id="header" class="bar">
-        <% if session[:user] and @user %>
-          <span style="float: right; padding: 10px;">
-            <a href="/user/edit"><%= @user.username %></a> /
-             <a href="/logout">logout</a>
-          </span>
-        <% end %>
-        <h1><a href="/">stackius</a></h1>
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="/">Stackius</a>
+          <div class="nav-collapse">
+            <ul class="nav">
+              <% if session[:user] and @user %>
+                <li><a href="/user/edit"><%= @user.username %></a></li>
+                <li><a href="/logout">logout</a></li>
+              <% end %>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
       </div>
+    </div>
 
+    <div>
+      <%= flash_tag :notice %>
+    </div>
+
+    <div class="container">
       <div>
-        <%= flash_tag :notice %>
+        <%= yield %>
       </div>
 
-      <div id="main" class="bar">
-        <%= yield %>
-      </div> <!-- End #main -->
-
-      <div id="footer" class="bar">
+      <hr>
+      <footer>
         <%= Time.now.year %> &copy; devCloud.org
         <!--
         Env: <%= Padrino.env %>
         -->
-      </div> <!-- End #footer -->
+      </footer> <!-- End #footer -->
     </div> <!-- End #container -->
   </body>
 </html>

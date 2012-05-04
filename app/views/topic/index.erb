@@ -1,4 +1,3 @@
-
 <% form_tag url(:topic, :fork), :method => 'post', :class => "form-inline" do %>
   <p>
   <h1>
@@ -33,11 +32,11 @@
 
 <% form_tag url(:message, :new), :method => 'post', :class => "form-inline" do %>
   <p>
-  <%= flash_tag :notice %>
+    <%= flash_tag :notice %>
   </p>
   <p>
-  <%= hidden_field_tag :topic_id, :value => @topic.id %>
-  <%= text_field_tag :text, :class => "span11" %>
-  <%= submit_tag "Post", :class => "btn btn-primary span1" %>
+    <%= hidden_field_tag :topic_id, :value => @topic.id %>
+    <%= text_field_tag :text, :class => "span11" %>
+    <%= submit_tag "Post", :class => "btn btn-primary span1" %>
   </p>
 <% end %>

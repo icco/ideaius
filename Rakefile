@@ -6,7 +6,7 @@ PadrinoTasks.init
 
 desc "Run a local server."
 task :local do
-  Kernel.exec("bundle exec shotgun")
+  Kernel.exec("bundle exec shotgun -p 4567")
 end
 
 task :default do

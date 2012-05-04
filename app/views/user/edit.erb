@@ -1,27 +1,19 @@
-<% form_tag url(:user, :edit), :method => 'post' do %>
+<% form_tag url(:user, :edit), :method => "post", :class => "span4 well" do %>
   <%= flash_tag :notice %>
 
-  <p>
-  <%= label_tag :username %><br />
-  <%= text_field_tag :username, :value => @user.username %>
-  </p>
+  <%= label_tag :username, :caption => "Username" %>
+  <%= text_field_tag :username, :class => "span4", :value => @user.username %>
+
+  <%= label_tag :email, :caption => "Email Address" %>
+  <%= text_field_tag :email, :class => "span4", :value => @user.email %>
+
+  <%= label_tag :github, :caption => "GitHub Username" %>
+  <%= text_field_tag :github, :class => "span4", :value => @user.github %>
+
+  <%= label_tag :twitter, :caption => "Twitter Username" %>
+  <%= text_field_tag :twitter, :class => "span4", :value => @user.twitter %>
 
   <p>
-  <%= label_tag :email %><br />
-  <%= text_field_tag :email, :value => @user.email %>
-  </p>
-
-  <p>
-  <%= label_tag :github %><br />
-  <%= text_field_tag :github, :value => @user.github %>
-  </p>
-
-  <p>
-  <%= label_tag :twitter %><br />
-  <%= text_field_tag :twitter, :value => @user.twitter %>
-  </p>
-
-  <p>
-  <%= submit_tag %>
+  <%= submit_tag "Edit", :class => "btn" %>
   </p>
 <% end %>

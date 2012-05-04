@@ -50,6 +50,6 @@ class Topic < ActiveRecord::Base
   def self.filter_name name
     return "" if name.nil?
 
-    return name.gsub(%r{\s}, '_').downcase
+    return name.gsub(%r{\s}, '_').gsub(%r{\W}, '').downcase
   end
 end

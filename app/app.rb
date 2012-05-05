@@ -1,7 +1,15 @@
 class Stackius < Padrino::Application
+
+  # Enables .less in app/stylesheets/
   register LessInitializer
+
+  # Enables render()
   register Padrino::Rendering
+
+  # For mailing...?
   register Padrino::Mailer
+
+  # Lots of small useful functions.
   register Padrino::Helpers
 
   register Padrino::Cache # includes helpers

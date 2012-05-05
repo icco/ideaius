@@ -7,6 +7,9 @@ class Stackius < Padrino::Application
   register Padrino::Cache # includes helpers
   enable :caching         # turns on caching
 
+  # Because we need to make sure ActiveRecord cleans up after itself.
+  use ActiveRecord::ConnectionAdapters::ConnectionManagement
+
   # Test that DB is there, although we'll never get here if Redis server is MIA.
   Padrino.cache.set("server:alive", "yes.")
   logger.push("NO REDIS at #{redis_connections[Padrino.env]}", :fatal) if Padrino.cache.get("server:alive") != "yes."

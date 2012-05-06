@@ -27,7 +27,8 @@ Stackius.controller do
 
     page_user = User.find_by_username(username)
     if page_user
-      render "user/index"
+      # render "user/index"
+      redirect "/#{@user}/default"
     else
       404
     end

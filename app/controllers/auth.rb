@@ -29,7 +29,7 @@ Stackius.controllers :auth do
     auth = auth.info
     logger.push(" Twitter: #{auth.inspect}", :devel)
 
-    user = User.find_by_github auth['nickname']
+    user = User.find_by_twitter auth['nickname']
 
     if user.nil?
       user = User.new

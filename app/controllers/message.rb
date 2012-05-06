@@ -16,6 +16,6 @@ Stackius.controllers :message do
 
     @topic.add_message @msg
 
-    redirect "/#{@user.username}/#{@topic.name}"
+    redirect "/#{@topic.user}/#{@topic.name}"
   end
 end

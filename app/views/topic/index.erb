@@ -29,7 +29,7 @@
           <tr>
             <td>
               <%= check_box_tag 'message_id[]', :value => msg.id, :class => 'message_id' %>
-              <span>&lt; <%= msg.user %> <%= msg.created_at.strftime('%T') %> &gt;</span> <%= msg.text %>
+              <span>[<%= msg.created_at.strftime('%T') %>] &lt;<%= msg.user %>&gt;</span> <%= msg.text %>
             </td>
           </tr>
         <% end %>

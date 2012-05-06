@@ -27,8 +27,11 @@ Stackius.controller do
 
     page_user = User.find_by_username(username)
     if page_user
-      # render "user/index"
-      redirect "/#{@user}/default"
+      if page_user == @user
+        redirect "/#{@user}/default"
+      else
+        render "user/index", :locals => {'user' => page_user}
+      end
     else
       404
     end

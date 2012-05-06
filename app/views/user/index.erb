@@ -1,6 +1,6 @@
-<h1><%= @user %>'s topics</h1>
+<h1><%= user %>'s topics</h1>
 <ul>
-  <% @user.topics.each do |topic| %>
-    <li><a href="<%= "/#{@user}/#{topic}" %>"><%= topic %></a></li>
+  <% user.topics.each do |topic| %>
+    <li><a href="<%= "/#{user}/#{topic}" %>"><%= topic %></a></li>
   <% end %>
 </ul>

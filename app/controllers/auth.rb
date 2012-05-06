@@ -56,7 +56,7 @@ Stackius.controllers :auth do
     user = User.find_by_github auth['nickname']
     user = User.find_by_email auth['email'] if user.nil?
 
-    if user.nil?
+    if user.nil? and User.allowed?({:github => auth['nickname']})
       user = User.new
       user.email = auth['email']
       user.username = auth['nickname']

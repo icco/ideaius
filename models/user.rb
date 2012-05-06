@@ -19,4 +19,17 @@ class User < ActiveRecord::Base
   def to_s
     return self.username
   end
+
+  def self.allowed? query
+    # TODO(icco): Move to a static file.
+    valid_github_users = %w{
+      cloudwalking
+      dmpatierno
+      frewsxcv
+      icco
+      mgius
+    }
+
+    return valid_github_users.exists? query[:github]
+  end
 end

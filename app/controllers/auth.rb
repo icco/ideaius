@@ -23,30 +23,6 @@ Stackius.controllers :auth do
     redirect '/'
   end
 
-  # Twitter Callback
-  get '/twitter/callback' do
-    auth = request.env['omniauth.auth']
-    auth = auth.info
-    logger.push(" Twitter: #{auth.inspect}", :devel)
-
-    user = User.find_by_twitter auth['nickname']
-
-    if user.nil?
-      user = User.new
-      user.username = auth['nickname']
-    end
-
-    if user.twitter.nil?
-      user.twitter = auth['nickname']
-    end
-
-    user.save # this could be all bad.
-
-    session[:user] = user.id
-
-    redirect '/'
-  end
-
   # Github callback
   get '/github/callback' do
     auth = request.env['omniauth.auth']

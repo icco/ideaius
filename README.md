@@ -22,3 +22,19 @@ This is going to be incredibly read heavy. Data design might be similar to Twitt
       * I could just duplicate the messages when forking to another topic, but it'd be nice to have some sort of relation between the new and old topic.
       * Megastore equivalent in Ruby?
       * Redis?
+
+
+## Config
+
+ For posterities sake...
+
+    DATABASE_URL        => postgres://qwebfvikat:JWgZUEc05wfNSdGxNeBp@ec2-23-21-64-58.compute-1.amazonaws.com/qwebfvikat
+    GEM_PATH            => vendor/bundle/ruby/1.9.1
+    GITHUB_KEY          => a4fbed9a31303b15b385
+    GITHUB_SECRET       => b3b4593c945d493d8ea76cde1e265b2c20e462d5
+    LANG                => en_US.UTF-8
+    PATH                => bin:vendor/bundle/ruby/1.9.1/bin:/usr/local/bin:/usr/bin:/bin
+    RACK_ENV            => production
+    REDISTOGO_URL       => redis://redistogo:f305593b6858899cfefd11d135ade894@drum.redistogo.com:9236/
+    SHARED_DATABASE_URL => postgres://qwebfvikat:JWgZUEc05wfNSdGxNeBp@ec2-23-21-64-58.compute-1.amazonaws.com/qwebfvikat
+    TZ                  => America/Los_Angeles

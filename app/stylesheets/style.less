@@ -4,8 +4,24 @@
  * @author Nat Welch
  */
 
+.border-radius (@radius) {
+  border-radius: @radius;
+  -moz-border-radius: @radius;
+  -webkit-border-radius: @radius;
+}
+
+.navbar-inner {
+  .border-radius(0);
+  background: none;
+
+  .brand {
+    font-weight: bold;
+  }
+}
+
 body {
   background: url("/images/texturetastic_gray.png");
+  padding-bottom: 40px;
 }
 
 .table {

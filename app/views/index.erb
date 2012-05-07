@@ -5,9 +5,11 @@
   Stackius is a place for storing your thoughts and working with others casually on ideas.
   </p>
 
-  <p>
-  We are currently in a closed alpha. Contact Nat if you would like to help test or find out more.
-  </p>
+  <% if @user.nil? %>
+    <p>
+    We are currently in a closed alpha. Contact Nat if you would like to help test or find out more.
+    </p>
+  <% end %>
 
   <p>
   <% if @user.nil? %>

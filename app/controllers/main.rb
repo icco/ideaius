@@ -3,12 +3,7 @@ Stackius.controller do
 
   get :index do
     @user = get_user
-
-    if @user
-      redirect "/#{@user}"
-    else
-      render :index
-    end
+    render :index
   end
 
   get :about do

@@ -33,32 +33,28 @@
   <body>
     <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
-        <div class="container">
+        <div class="container-fluid">
           <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
           <a class="brand" href="/">Stackius</a>
-          <div class="nav-collapse">
-            <ul class="nav">
-              <li><a href="/about">about</a></li>
-              <% if session[:user] and @user %>
-                <li><a href="/user/edit"><%= @user.username %></a></li>
-                <li><a href="/logout">logout</a></li>
-              <% end %>
-            </ul>
-            <div class="btn-group">
-              <a class="btn btn-primary" href="#"><i class="icon-user icon-white"></i> User</a>
-              <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+          <% if @user %>
+            <div class="btn-group pull-right">
+              <a class="btn dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-user"></i> <%= @user %> <span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="#"><i class="icon-pencil"></i> Edit</a></li>
-                <li><a href="#"><i class="icon-trash"></i> Delete</a></li>
-                <li><a href="#"><i class="icon-ban-circle"></i> Ban</a></li>
+                <li><a href="/<%= @user %>">Topics</a></li>
+                <li><a href="/user/edit">Edit Profile</a></li>
                 <li class="divider"></li>
-                <li><a href="#"><i class="i"></i> Make admin</a></li>
+                <li><a href="/logout">Logout</a></li>
               </ul>
             </div>
+          <% end %>
+          <div class="nav-collapse">
+            <ul class="nav">
+              <li><a href="/about">About</a></li>
+            </ul>
           </div><!--/.nav-collapse -->
         </div>
       </div>
@@ -75,7 +71,7 @@
 
       <hr>
       <footer>
-        <%= Time.now.year %> &copy; devCloud.org
+      <%= Time.now.year %> &copy; <a href="http://devcloud.org">DevCloud</a>
         <!--
         Env: <%= Padrino.env %>
         -->

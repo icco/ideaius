@@ -1,4 +1,3 @@
-
 <div class="hero-unit">
   <h1>Welcome!</h1>
 
@@ -7,28 +6,17 @@
   </p>
 
   <p>
-  <a class="btn btn-primary btn-large" href="/auth/github">Log-in with Github</a>
-  <% if Padrino.env == :development %>
-    <a  class="btn btn-large" href="/auth/developer">Log-in as a dev</a>
+  We are currently in a closed alpha. Contact Nat if you would like to help test or find out more.
+  </p>
+
+  <p>
+  <% if @user.nil? %>
+    <a class="btn btn-primary btn-large" href="/auth/github">Log-in with Github</a>
+    <% if Padrino.env == :development %>
+      <a  class="btn btn-large" href="/auth/developer">Log-in as a dev</a>
+    <% end %>
+  <% else %>
+    <a class="btn btn-primary btn-large" href="/<%= @user %>">Go to your topics</a>
   <% end %>
   </p>
-</div>
-
-<!-- Example row of columns -->
-<div class="row">
-  <div class="span4">
-    <h2>Heading</h2>
-    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-    <p><a class="btn" href="#">View details &raquo;</a></p>
-  </div>
-  <div class="span4">
-    <h2>Heading</h2>
-    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-    <p><a class="btn" href="#">View details &raquo;</a></p>
-  </div>
-  <div class="span4">
-    <h2>Heading</h2>
-    <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-    <p><a class="btn" href="#">View details &raquo;</a></p>
-  </div>
 </div>

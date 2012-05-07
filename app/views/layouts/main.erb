@@ -42,6 +42,7 @@
           <a class="brand" href="/">Stackius</a>
           <div class="nav-collapse">
             <ul class="nav">
+              <li><a href="/about">about</a></li>
               <% if session[:user] and @user %>
                 <li><a href="/user/edit"><%= @user.username %></a></li>
                 <li><a href="/logout">logout</a></li>

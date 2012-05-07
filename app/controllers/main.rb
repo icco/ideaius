@@ -2,15 +2,21 @@ Stackius.controller do
   layout :main
 
   get :index do
-    if session[:user]
-      @user = User.find_by_id session[:user]
-      redirect "/#{@user.username}"
+    @user = get_user
+
+    if @user
+      redirect "/#{@user}"
     else
       render :index
     end
   end
 
-  get '/logout' do
+  get :about do
+    @user = get_user
+    render :about
+  end
+
+  get :logout do
     session[:user] = nil
     redirect '/'
   end

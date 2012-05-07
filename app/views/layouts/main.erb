@@ -24,28 +24,27 @@
     <%= yield_content :assets %>
   </head>
   <body>
-    <div class="navbar navbar-fixed-top">
-        <div class="container">
-          <div class="btn-group pull-right">
-            <% if @user %>
-              <a class="btn btn-info dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-white icon-user"></i> <%= @user %> <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="/<%= @user %>">Topics</a></li>
-                <li><a href="/user/edit">Edit Profile</a></li>
-            <% else %>
-              <a class="btn btn-info dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-white icon-user"></i> user <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="/auth/github">Log-in with GitHub</a></li>
-            <% end %>
-                <li class="divider"></li>
-                <li><a href="/">Home</a></li>
-                <li><a href="/about">About</a></li>
-            <% if @user %>
-                <li><a href="/logout">Logout</a></li>
-            <% end %>
-              </ul>
-          </div>
-      </div>
+    <div class="btn-group pull-right top-btn">
+      <a href="/" class="btn btn-large btn-inverse">Stackius</a>
+      <button class="btn btn-large btn-inverse dropdown-toggle" data-toggle="dropdown">
+        <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu">
+        <% if @user %>
+          <li><a href="/<%= @user %>"><i class="icon-user"></i> <%= @user %>'s topics</a></li>
+          <li><a href="/user/edit"><i class="icon-user"></i> Edit Profile</a></li>
+        <% else %>
+          <li><a href="/auth/github">Log-in with GitHub</a></li>
+          <% if Padrino.env == :development %>
+            <li><a href="/auth/developer">Log-in as a dev</a></li>
+          <% end %>
+        <% end %>
+        <li class="divider"></li>
+        <li><a href="/about">About</a></li>
+        <% if @user %>
+          <li><a href="/logout">Logout</a></li>
+        <% end %>
+      </ul>
     </div>
 
     <div>

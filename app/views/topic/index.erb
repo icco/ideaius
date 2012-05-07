@@ -1,20 +1,21 @@
+<div class="page-header">
+  <p>
+  <h1>
+    <a href="/<%= @topic.user %>"><%= @topic.user %></a> /
+    <a href="/<%= @topic.user %>/<%= @topic %>"><%= @topic %></a>
+  </h1>
+  </p>
+</div>
+
 <div class="row">
-  <div class="page-header span12">
-    <p>
-      <h1>
-        <a href="/<%= @topic.user %>"><%= @topic.user %></a> /
-        <a href="/<%= @topic.user %>/<%= @topic %>"><%= @topic %></a>
-      </h1>
-    </p>
-  </div>
-  <div class="span8">
+  <div class="well span7">
     <% form_tag url(:topic, :fork), :method => 'post', :class => "form-inline" do %>
       <p>
-        <% if !@topic.messages.empty? %>
-          <%= hidden_field_tag :topic_id, :value => @topic.id %>
-          <%= text_field_tag :new_topic_name %>
-          <%= submit_tag "Fork", :class => "btn btn-info span1" %>
-        <% end %>
+      <% if !@topic.messages.empty? %>
+        <%= hidden_field_tag :topic_id, :value => @topic.id %>
+        <%= text_field_tag :new_topic_name %>
+        <%= submit_tag "Fork", :class => "btn btn-info span1" %>
+      <% end %>
       </p>
 
       <table class="table table-condensed" id="messages">
@@ -38,16 +39,16 @@
 
     <% form_tag url(:message, :new), :method => 'post', :class => "form-inline" do %>
       <p>
-        <%= flash_tag :notice %>
+      <%= flash_tag :notice %>
       </p>
       <p>
-        <%= hidden_field_tag :topic_id, :value => @topic.id %>
-        <%= text_field_tag :text, :class => "span7" %>
-        <%= submit_tag "Post", :class => "btn btn-primary span1" %>
+      <%= hidden_field_tag :topic_id, :value => @topic.id %>
+      <%= text_field_tag :text, :class => "span6" %>
+      <%= submit_tag "Post", :class => "btn btn-primary span1" %>
       </p>
     <% end %>
   </div>
-  <div class="span4">
+  <div class="span4 well">
     <h2><%= @user %>'s topics</h2>
     <ul>
       <% @user.topics.each do |topic| %>

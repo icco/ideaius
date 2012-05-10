@@ -1,3 +1,6 @@
 $(document).ready(function() {
-  console.log("Application.js loaded");
+  $('#messages input:checkbox').change(function(e) { 
+    console.log(e.currentTarget.checked);
+    console.log(e.currentTarget);
+  });
 });

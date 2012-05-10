@@ -9,12 +9,10 @@
 
 <div class="row">
   <div class="well span7">
-    <% form_tag url(:topic, :fork), :method => 'post', :class => "form-inline" do %>
+    <% form_tag url(:topic, :fork), :id => 'messages', :method => 'post', :class => "form-inline" do %>
       <p>
       <% if !@topic.messages.empty? %>
         <%= hidden_field_tag :topic_id, :value => @topic.id %>
-        <%= text_field_tag :new_topic_name %>
-        <%= submit_tag "Fork", :class => "btn btn-info span1" %>
       <% end %>
       </p>
 
@@ -49,6 +47,11 @@
     <% end %>
   </div>
   <div class="span4 well">
+    <form class="form-inline">
+      <%= text_field_tag :new_topic_name %>
+      <%= submit_tag "Fork", :class => "btn btn-info span1" %>
+    </form>
+
     <h2><%= @user %>'s topics</h2>
     <ul>
       <% @user.topics.each do |topic| %>

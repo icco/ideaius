@@ -11,6 +11,7 @@ gem "rack-less"
 gem "rake"
 gem "sinatra-flash", :require => "sinatra/flash"
 gem "therubyracer"
+gem "thin"
 
 # Padrino
 gem "padrino", :git => "git://github.com/padrino/padrino-framework.git"

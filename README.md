@@ -38,3 +38,8 @@ This is going to be incredibly read heavy. Data design might be similar to Twitt
     REDISTOGO_URL       => redis://redistogo:f305593b6858899cfefd11d135ade894@drum.redistogo.com:9236/
     SHARED_DATABASE_URL => postgres://qwebfvikat:JWgZUEc05wfNSdGxNeBp@ec2-23-21-64-58.compute-1.amazonaws.com/qwebfvikat
     TZ                  => America/Los_Angeles
+
+## Thoughts
+
+ * <https://devcenter.heroku.com/articles/statsmix>
+ * focus more on topic discussion? Thought organization?

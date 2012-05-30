@@ -45,6 +45,7 @@ end
 Padrino.before_load do
 
   # https://devcenter.heroku.com/articles/sendgrid
+  # http://docs.sendgrid.com/documentation/api/parse-api-2/
   Pony.options = {
     :via => :smtp,
     :via_options => {

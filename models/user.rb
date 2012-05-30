@@ -23,6 +23,7 @@ class User < ActiveRecord::Base
   def self.allowed? query
     # TODO(icco): Move to a static file.
     valid_github_users = %w{
+      alexbaldwin
       cloudwalking
       dmpatierno
       frewsxcv

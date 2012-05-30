@@ -6,6 +6,7 @@ gem "json"
 gem "less"
 gem "multi_json"
 gem "omniauth-github" # https://github.com/intridea/omniauth-github
+gem "pony"
 gem "rack"
 gem "rack-less"
 gem "rake"

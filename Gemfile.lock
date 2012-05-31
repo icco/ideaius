@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/padrino/padrino-framework.git
-  revision: 78329337e6bcaaa15f82639f4569784e6538dfaf
+  revision: 41d67efe3287f50aa08fe3cf7ab066a6e40bab4a
   specs:
     padrino (0.10.6)
       padrino-admin (= 0.10.6)
@@ -55,7 +55,7 @@ GEM
     faraday (0.8.1)
       multipart-post (~> 1.1)
     hashie (1.2.0)
-    heroku (2.26.2)
+    heroku (2.26.3)
       heroku-api (~> 0.2.1)
       launchy (>= 0.3.2)
       netrc (~> 0.7.2)

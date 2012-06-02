@@ -18,4 +18,9 @@ Stackius.helpers do
 
     return nil
   end
+
+  def gravatar email
+    url = Gravatar.new(email).image_url
+    return url
+  end
 end

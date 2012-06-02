@@ -44,6 +44,10 @@ end
 
 Padrino.before_load do
 
+  # https://github.com/sinisterchipmunk/gravatar
+  #Gravatar.cache = Padrino.cache
+  Gravatar.logger = Padrino::Logger
+
   # https://devcenter.heroku.com/articles/sendgrid
   # http://docs.sendgrid.com/documentation/api/parse-api-2/
   Pony.options = {

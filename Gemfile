@@ -2,6 +2,7 @@ source :rubygems
 
 gem "activerecord", :require => "active_record"
 gem "erubis"
+gem "gravatar-ultimate"
 gem "json"
 gem "less"
 gem "multi_json"

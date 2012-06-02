@@ -9,31 +9,19 @@
 
 <div class="row">
   <div class="well span7">
-    <% form_tag url(:topic, :fork), :id => 'messages', :method => 'post', :class => "form-inline" do %>
-      <p>
-      <% if !@topic.messages.empty? %>
-        <%= hidden_field_tag :topic_id, :value => @topic.id %>
+    <table class="table table-condensed" id="messages">
+      <% @topic.messages.each do |msg| %>
+        <tr>
+          <td>
+            <img src="<%= gravatar msg.user.email %>" title="<%= msg.user %>" alt="<%= msg.user %>'s gravatar" class="gravatar" />
+            <span class="message-text"><%= msg.text %></span>
+            <div class="message-meta">
+              <span class="label"> <%= msg.created_at.strftime('%T') %> <%= msg.created_at.strftime('%D') %> </span>
+            </div>
+          </td>
+        </tr>
       <% end %>
-      </p>
-
-      <table class="table table-condensed" id="messages">
-        <% day = nil %>
-        <% @topic.messages.each do |msg| %>
-          <% if day != msg.created_at.strftime('%D') %>
-            <% day = msg.created_at.strftime('%D') %>
-            <tr>
-              <th><%= day %></th>
-            </tr>
-          <% end %>
-          <tr>
-            <td>
-              <%= check_box_tag 'message_id[]', :value => msg.id, :class => 'message_id' %>
-              <span>[<%= msg.created_at.strftime('%T') %>] &lt;<%= msg.user %>&gt;</span> <%= msg.text %>
-            </td>
-          </tr>
-        <% end %>
-      </table>
-    <% end %>
+    </table>
 
     <% form_tag url(:message, :new), :method => 'post', :class => "form-inline" do %>
       <p>
@@ -47,11 +35,6 @@
     <% end %>
   </div>
   <div class="span4 well">
-    <form class="form-inline">
-      <%= text_field_tag :new_topic_name %>
-      <%= submit_tag "Fork", :class => "btn btn-info span1" %>
-    </form>
-
     <h2><%= @user %>'s topics</h2>
     <ul>
       <% @user.topics.each do |topic| %>

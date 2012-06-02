@@ -10,6 +10,26 @@
   -webkit-border-radius: @radius;
 }
 
+img.gravatar {
+  vertical-align: middle;
+  .border-radius(3px);
+}
+
+#messages {
+  .gravatar {
+    height: 24px;
+    margin: 2px 5px 5px 0px;
+  }
+
+  .message-meta {
+    float: right;
+    padding-left: 5px;
+    padding-top: 5px;
+    padding-bottom: 3px;
+    padding-right: 3px;
+  }
+}
+
 .top-btn {
   margin: 10px;
 }
@@ -20,7 +40,8 @@ body {
 }
 
 .table {
-  th {
-    border: none;
+  td {
+    border-top: none;
+    border-bottom: 1px solid #DDD;
   }
 }

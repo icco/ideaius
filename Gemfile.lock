@@ -54,6 +54,7 @@ GEM
     excon (0.14.0)
     faraday (0.8.1)
       multipart-post (~> 1.1)
+    gravatar-ultimate (1.0.3)
     hashie (1.2.0)
     heroku (2.26.5)
       heroku-api (~> 0.2.4)
@@ -140,6 +141,7 @@ PLATFORMS
 DEPENDENCIES
   activerecord
   erubis
+  gravatar-ultimate
   heroku
   json
   less

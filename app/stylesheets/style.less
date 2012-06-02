@@ -4,6 +4,7 @@
  * @author Nat Welch
  */
 
+// a nice macro for round corners
 .border-radius (@radius) {
   border-radius: @radius;
   -moz-border-radius: @radius;
@@ -15,7 +16,12 @@ img.gravatar {
   .border-radius(3px);
 }
 
-#messages {
+.ui-draggable-dragging {
+  width: 300px;
+  background-color: grey;
+}
+
+.message {
   .gravatar {
     height: 24px;
     margin: 2px 5px 5px 0px;
@@ -27,11 +33,22 @@ img.gravatar {
     padding-top: 5px;
     padding-bottom: 3px;
     padding-right: 3px;
+    cursor: move;
   }
 }
 
-.top-btn {
-  margin: 10px;
+#topics {
+  .topic {
+    padding: 3px 10px;
+  }
+
+  .active {
+    background: yellow;
+  }
+
+  .hover {
+    background: green;
+  }
 }
 
 body {

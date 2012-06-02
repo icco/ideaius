@@ -36,7 +36,7 @@
   </div>
   <div class="span4 well">
     <h2><%= @user %>'s topics</h2>
-    <ul>
+    <ul id="topics">
       <% @user.topics.each do |topic| %>
         <% if topic != @topic %>
           <li><a href="<%= "/#{@user}/#{topic}" %>"><%= topic.user %>/<%= topic %></a></li>
@@ -45,3 +45,21 @@
     </ul>
   </div>
 </div>
+
+<script>
+  $(function() {
+    $("tr").draggable({
+      appendTo: "body",
+      helper: "clone"
+    });
+    $("#topics").droppable({
+      activeClass: "ui-state-default",
+      hoverClass: "ui-state-hover",
+      accept: ":not(.ui-sortable-helper)",
+      drop: function( event, ui ) {
+        $( this ).find( ".placeholder" ).remove();
+        $( "<li></li>" ).text( ui.draggable.text() ).appendTo( this );
+      }
+    });
+  });
+</script>

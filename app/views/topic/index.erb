@@ -12,7 +12,7 @@
     <table class="table table-condensed" id="messages">
       <% @topic.messages.each do |msg| %>
         <tr>
-          <td class="message">
+          <td class="message" data-id="<%= msg.id %>">
             <img src="<%= gravatar msg.user.email %>" title="<%= msg.user %>" alt="<%= msg.user %>'s gravatar" class="gravatar" />
             <span class="message-text"><%= msg.text %></span>
             <div class="message-meta">
@@ -48,19 +48,19 @@
 
 <script>
   $(function() {
-    $("tr").draggable({
+    $(".message").draggable({
       cursor: "move",
       cursorAt: { top: 50, right: 10 },
       handle: ".message-meta",
       helper: "clone",
       revert: "invalid",
     });
+
     $("li.topic").droppable({
       activeClass: "active",
       hoverClass:  "hover",
-      drop: function( event, ui ) {
-        console.log(event);
-        console.log(ui);
+      drop: function(event, ui) {
+        console.log(ui.draggable.attr('data-id'));
       }
     });
   });

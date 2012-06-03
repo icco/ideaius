@@ -60,7 +60,11 @@
       activeClass: "active",
       hoverClass:  "hover",
       drop: function(event, ui) {
-        console.log(ui.draggable.attr('data-id'));
+        console.log(this.val());
+        var message_id = ui.draggable.attr('data-id');
+        var topic = ui.droppable.text;
+
+        console.log("Adding " + message_id + " to " + topic);
       }
     });
   });

@@ -60,11 +60,23 @@
       activeClass: "active",
       hoverClass:  "hover",
       drop: function(event, ui) {
-        console.log(this.val());
         var message_id = ui.draggable.attr('data-id');
-        var topic = ui.droppable.text;
+        var topic_user = this.innerText.split("/")[0];
+        var topic_name = this.innerText.split("/")[1];
+        var data = {
+          message_id: message_id,
+          topic: {
+            user: topic_user,
+            name: topic_name
+          }
+        }
 
-        console.log("Adding " + message_id + " to " + topic);
+        console.log("Adding " + message_id + " to " + data.topic);
+
+        // http://api.jquery.com/jQuery.post/
+        $.post('/topic/add_msg.json', data, function(ret_data) {
+          console.log(ret_data);
+        });
       }
     });
   });

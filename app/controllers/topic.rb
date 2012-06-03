@@ -27,4 +27,15 @@ Stackius.controllers :topic do
 
     redirect "/#{@user.username}/#{@topic.name}"
   end
+
+  # TODO(icco): add post parameter validation.
+  post :'add_msg.json' do
+    @user = logged_in!
+
+    user = User.where(:username => params["topic"]["user"]).first
+    @topic = Topic.where(:user_id => user.id, :name => params["topic"]["name"]).first
+    @topic.add_message_id params["message_id"]
+
+    return {:status => 'success'}.to_json
+  end
 end

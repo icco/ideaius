@@ -16,7 +16,9 @@ gem "therubyracer"
 gem "thin"
 
 # Monitoring
-gem 'newrelic_rpm'
+group :production do
+  gem 'newrelic_rpm'
+end
 
 # Padrino
 gem "padrino", :git => "git://github.com/padrino/padrino-framework.git"

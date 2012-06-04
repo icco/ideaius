@@ -15,6 +15,9 @@ gem "sinatra-flash", :require => "sinatra/flash"
 gem "therubyracer"
 gem "thin"
 
+# Monitoring
+gem 'newrelic_rpm'
+
 # Padrino
 gem "padrino", :git => "git://github.com/padrino/padrino-framework.git"
 

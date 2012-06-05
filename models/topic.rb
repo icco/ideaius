@@ -1,6 +1,12 @@
 class Topic < ActiveRecord::Base
   belongs_to :user
 
+  def initialize
+    super
+
+    @key = "#{self.user}:#{self}"
+  end
+
   # In theory, we shouldn't have to block on this function, even though we do.
   def add_message msg
     if msg.nil?
@@ -11,13 +17,11 @@ class Topic < ActiveRecord::Base
   end
 
   def add_message_id id
-    @key = "#{self.user}:#{self}"
-
     if id.nil?
       return false
     end
 
-    Padrino.cache.rpush @key, id
+    Padrino.cache.sadd @key, id
 
     return true
   end
@@ -26,17 +30,10 @@ class Topic < ActiveRecord::Base
   def messages count = 50
     @key = "#{self.user}:#{self}"
 
-    max = Padrino.cache.llen @key
-    max = 0 if max.nil?
-    min = [0, max-count].max
-
-    if min != max
-      ids = Padrino.cache.lrange(@key, min, max)
-    end
-
+    ids = Padrino.cache.get @key
     ids = [] if ids.nil?
 
-    return Message.where(:id => ids)
+    return Message.where(:id => ids).order(:created_at).limit(count)
   end
 
   def to_s
@@ -49,11 +46,26 @@ class Topic < ActiveRecord::Base
 
   def self.filter_name name
     return "" if name.nil?
-
     return name.gsub(%r{\s}, '_').gsub(%r{\W}, '').downcase
   end
 
   def self.find_by_message_ids ids
-    return []
+    require 'digest/bubblebabble'
+    tmp_key = Digest.bubblebabble(Digest::SHA1::hexdigest(rand(36**8).to_s(36))).split(//).sample(10).join
+    Padrino.cache.sadd tmp_key, ids
+
+    topics = []
+    Padrino.cache.keys("*:*").each do |key|
+      intersection = Padrino.cache.sinter key, tmp_key
+
+      if intersection
+        user_name, topic_name = key.split(":")
+        user = User.where(:username => user_name).first
+        topic = Topic.where(:user_id => user, :name => topic_name).first
+        topics.push topic
+      end
+    end
+
+    return topics
   end
 end

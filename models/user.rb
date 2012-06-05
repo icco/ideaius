@@ -13,7 +13,10 @@ class User < ActiveRecord::Base
       topics.push topic
     end
 
-    return topics
+    msg_ids = Message.find(:user_id => self.id, :select => 'id').map(&:id)
+    more_topics = Topic.find_by_message_ids(msg_ids)
+
+    return topics + more_topics
   end
 
   def to_s

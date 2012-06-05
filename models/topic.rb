@@ -52,4 +52,8 @@ class Topic < ActiveRecord::Base
 
     return name.gsub(%r{\s}, '_').gsub(%r{\W}, '').downcase
   end
+
+  def self.find_by_message_ids ids
+    return []
+  end
 end

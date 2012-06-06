@@ -34,6 +34,6 @@ class User < ActiveRecord::Base
       mgius
     }
 
-    return valid_github_users.exists? query[:github]
+    return valid_github_users.include? query[:github]
   end
 end

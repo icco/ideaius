@@ -1,4 +1,3 @@
-
 require File.expand_path('../config/boot.rb', __FILE__)
 require 'padrino-core/cli/rake'
 
@@ -32,8 +31,11 @@ namespace :onetime do
   desc "Switches all lists to sets in Redis."
   task :switch_to_sets do
     Padrino.cache.keys("*:*").each do |key|
-      # use llen and lpop to get all the values
-      p ids
+      ids = []
+      begin
+        ids.push(Padrino.cache.lpop(key))
+      end while Padrino.cache.llen(key) > 0
+
       Padrino.cache.del key
       ids.each {|id| Padrino.cache.sadd key, id }
       p Padrino.cache.smembers key

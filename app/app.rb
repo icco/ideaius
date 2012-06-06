@@ -19,7 +19,7 @@ class Stackius < Padrino::Application
   use ActiveRecord::ConnectionAdapters::ConnectionManagement
 
   # Test that DB is there, although we'll never get here if Redis server is MIA.
-  Padrino.cache.set("server:alive", "yes.")
+  Padrino.cache.set("server_status", "alive.")
   logger.push("NO REDIS at #{redis_connections[Padrino.env]}", :fatal) if Padrino.cache.get("server:alive") != "yes."
 
   use Rack::Session::Cookie

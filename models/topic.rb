@@ -56,13 +56,15 @@ class Topic < ActiveRecord::Base
 
     topics = []
     Padrino.cache.keys("*:*").each do |key|
-      intersection = Padrino.cache.sinter key, tmp_key
+      if Padrino.cache.type(key) == "set"
+        intersection = Padrino.cache.sinter key, tmp_key
 
-      if intersection
-        user_name, topic_name = key.split(":")
-        user = User.where(:username => user_name).first
-        topic = Topic.where(:user_id => user, :name => topic_name).first
-        topics.push topic
+        if intersection
+          user_name, topic_name = key.split(":")
+          user = User.where(:username => user_name).first
+          topic = Topic.where(:user_id => user, :name => topic_name).first
+          topics.push topic
+        end
       end
     end
 

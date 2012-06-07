@@ -39,7 +39,7 @@
     <ul id="topics">
       <% @user.topics.each do |topic| %>
         <% if topic != @topic %>
-          <li class="topic"><a href="<%= "/#{@user}/#{topic}" %>"><%= topic.user %>/<%= topic %></a></li>
+          <li class="topic"><a href="<%= "/#{topic.user}/#{topic}" %>"><%= topic.user %>/<%= topic %></a></li>
         <% end %>
       <% end %>
     </ul>

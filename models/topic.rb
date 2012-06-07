@@ -60,6 +60,8 @@ class Topic < ActiveRecord::Base
         intersection = Padrino.cache.sinter key, tmp_key
         p intersection
         p ids
+        p Padrino.cache.smembers key
+        p Padrino.cache.smembers tmp_key
 
         if !intersection.empty?
           user_name, topic_name = key.split(":")

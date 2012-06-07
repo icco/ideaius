@@ -59,7 +59,7 @@ class Topic < ActiveRecord::Base
       if Padrino.cache.type(key) == "set"
         intersection = Padrino.cache.sinter key, tmp_key
 
-        if intersection
+        if !intersection
           user_name, topic_name = key.split(":")
           user = User.where(:username => user_name).first
           topic = Topic.where(:user_id => user, :name => topic_name).first

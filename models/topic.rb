@@ -30,7 +30,7 @@ class Topic < ActiveRecord::Base
   def messages count = 50
     @key = "#{self.user}:#{self}"
 
-    ids = Padrino.cache.get @key
+    ids = Padrino.cache.smembers @key
     ids = [] if ids.nil?
 
     return Message.where(:id => ids).order(:created_at).limit(count)

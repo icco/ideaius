@@ -21,7 +21,12 @@ class Topic < ActiveRecord::Base
       return false
     end
 
+    before = Padrino.cache.smembers @key
     Padrino.cache.sadd @key, id
+    after = Padrino.cache.smembers @key
+
+    p before
+    p after
 
     return true
   end

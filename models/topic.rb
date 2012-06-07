@@ -1,10 +1,8 @@
 class Topic < ActiveRecord::Base
   belongs_to :user
 
-  def initialize
-    super
-
-    @key = "#{self.user}:#{self}"
+  def key
+    return "#{self.user}:#{self}"
   end
 
   # In theory, we shouldn't have to block on this function, even though we do.
@@ -21,17 +19,16 @@ class Topic < ActiveRecord::Base
       return false
     end
 
-    p @key
-    Padrino.cache.sadd @key, id
+    Padrino.cache.sadd self.key, id
 
     return true
   end
 
   # Gets most resent messages
   def messages count = 50
-    @key = "#{self.user}:#{self}"
+    self.key = "#{self.user}:#{self}"
 
-    ids = Padrino.cache.smembers @key
+    ids = Padrino.cache.smembers self.key
     ids = [] if ids.nil?
     p ids
 

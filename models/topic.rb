@@ -58,16 +58,12 @@ class Topic < ActiveRecord::Base
     Padrino.cache.keys("*:*").each do |key|
       if Padrino.cache.type(key) == "set"
         intersection = Padrino.cache.sinter key, tmp_key
-        p intersection
-        p ids
-        p Padrino.cache.smembers key
-        p Padrino.cache.smembers tmp_key
 
         if !intersection.empty?
           user_name, topic_name = key.split(":")
           user = User.where(:username => user_name).first
           topic = Topic.where(:user_id => user, :name => topic_name).first
-          topics.push topic
+          topics.push topic if !topics.include? topic
         end
       end
     end

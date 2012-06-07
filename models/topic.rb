@@ -26,8 +26,6 @@ class Topic < ActiveRecord::Base
 
   # Gets most resent messages
   def messages count = 50
-    self.key = "#{self.user}:#{self}"
-
     ids = Padrino.cache.smembers self.key
     ids = [] if ids.nil?
     p ids

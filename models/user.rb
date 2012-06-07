@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
       topics.push topic
     end
 
-    msg_ids = Message.find(:where => {:user_id => self.id}, :select => 'id').map(&:id)
+    msg_ids = Message.where(:user_id => self.id).select('id')
     more_topics = Topic.find_by_message_ids(msg_ids)
 
     return topics + more_topics

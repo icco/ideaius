@@ -1,6 +1,6 @@
 # stackius
 
-Forkable chatrooms.
+Stackius is a weird product, but it started out as wikidea, a site for collaborating on ideas. Then it turned into ideaius, a site for sharing ideas. Then it turned into stackius, a site for forkable chatrooms. Now though, stackius is casual project management.
 
 ## MVP
 
@@ -47,3 +47,5 @@ This is going to be incredibly read heavy. Data design might be similar to Twitt
  * better dragging UI
  * posting via email, txt, mobile app
  * daily email of new posts in default (or maybe threads you're following?)
+
+

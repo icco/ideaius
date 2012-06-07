@@ -32,6 +32,7 @@ class Topic < ActiveRecord::Base
 
     ids = Padrino.cache.smembers @key
     ids = [] if ids.nil?
+    p ids
 
     return Message.where(:id => ids).order(:created_at).limit(count)
   end
@@ -63,7 +64,7 @@ class Topic < ActiveRecord::Base
           user_name, topic_name = key.split(":")
           user = User.where(:username => user_name).first
           topic = Topic.where(:user_id => user, :name => topic_name).first
-          topics.push topic if !topics.include? topic
+          topics.push topic
         end
       end
     end

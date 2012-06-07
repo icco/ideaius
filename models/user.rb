@@ -16,7 +16,8 @@ class User < ActiveRecord::Base
     msg_ids = Message.where(:user_id => self.id).select('id').map(&:id)
     more_topics = Topic.find_by_message_ids(msg_ids)
 
-    return topics + more_topics
+    # Union the two together
+    return topics | more_topics
   end
 
   def to_s

@@ -14,6 +14,7 @@ Stackius.controllers :message do
     @msg.user_id = @user.id
     @msg.save
 
+    p "adding: #{@msg.id}"
     @topic.add_message @msg
 
     redirect "/#{@topic.user}/#{@topic.name}"

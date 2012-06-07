@@ -31,14 +31,16 @@ namespace :onetime do
   desc "Switches all lists to sets in Redis."
   task :switch_to_sets do
     Padrino.cache.keys("*:*").each do |key|
-      ids = []
-      begin
-        ids.push(Padrino.cache.lpop(key))
-      end while Padrino.cache.llen(key) > 0
+      if Padrino.cache.type(key) == "list"
+        ids = []
+        begin
+          ids.push(Padrino.cache.lpop(key))
+        end while Padrino.cache.llen(key) > 0
 
-      Padrino.cache.del key
-      ids.each {|id| Padrino.cache.sadd key, id }
-      p Padrino.cache.smembers key
+        Padrino.cache.del key
+        ids.each {|id| Padrino.cache.sadd key, id }
+        p Padrino.cache.smembers key
+      end
     end
   end
 end

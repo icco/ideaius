@@ -48,10 +48,14 @@ class Topic < ActiveRecord::Base
 
   def self.find_by_message_ids ids
     require 'digest/bubblebabble'
+
+    topics = []
+
+    return topics if ids.empty?
+
     tmp_key = Digest.bubblebabble(Digest::SHA1::hexdigest(rand(36**8).to_s(36))).split(//).sample(10).join
     Padrino.cache.sadd tmp_key, ids
 
-    topics = []
     Padrino.cache.keys("*:*").each do |key|
       if Padrino.cache.type(key) == "set"
         intersection = Padrino.cache.sinter key, tmp_key

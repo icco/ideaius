@@ -42,6 +42,8 @@
           <li class="topic"><a href="<%= "/#{topic.user}/#{topic}" %>"><%= topic.user %>/<%= topic %></a></li>
         <% end %>
       <% end %>
+
+      <li class="topic">new topic...</li>
     </ul>
   </div>
 </div>
@@ -61,8 +63,17 @@
       hoverClass:  "hover",
       drop: function(event, ui) {
         var message_id = ui.draggable.attr('data-id');
-        var topic_user = this.innerText.split("/")[0];
-        var topic_name = this.innerText.split("/")[1];
+        var topic_text = this.innerText;
+        var topic_user = "<%= @user %>";
+        var topic_name = "";
+
+        if (topic_text == "new topic...") {
+          topic_name = "one";
+        } else {
+          topic_user = topic_text.split("/")[0];
+          topic_name = topic_text.split("/")[1];
+        }
+
         var data = {
           message_id: message_id,
           topic: {

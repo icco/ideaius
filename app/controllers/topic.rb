@@ -33,7 +33,20 @@ Stackius.controllers :topic do
     @user = logged_in!
 
     user = User.where(:username => params["topic"]["user"]).first
+
+    if !user
+      return {:status => 'fail'}.to_json
+    end
+
     @topic = Topic.where(:user_id => user.id, :name => params["topic"]["name"]).first
+    if !@topic
+      @topic = Topic.new
+      @topic.name = params["topic"]["name"]
+      @topic.user_id = user.id
+      @topic.private = true
+      @topic.save
+    end
+
     @topic.add_message_id params["message_id"]
 
     return {:status => 'success'}.to_json

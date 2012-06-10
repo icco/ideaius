@@ -17,6 +17,9 @@
   <%= label_tag :twitter, :caption => "Twitter Username" %>
   <%= text_field_tag :twitter, :class => "span4", :value => @user.twitter %>
 
+  <%= label_tag :telephone, :caption => "Phone Number" %>
+  <%= telephone_field_tag :telephone, :class => "span4", :value => @user.telephone %>
+
   <p>
   <%= submit_tag "Save", :class => "btn btn-success" %>
   </p>

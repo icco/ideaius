@@ -18,6 +18,7 @@ Stackius.controllers :user do
     @user.email = params["email"]
     @user.github = params["github"]
     @user.twitter = params["twitter"]
+    @user.telephone = params["telephone"]
     @user.save
 
     redirect url(:user, :edit)

@@ -1,12 +1,13 @@
 # stackius
 
-Stackius is a weird product, but it started out as wikidea, a site for collaborating on ideas. Then it turned into ideaius, a site for sharing ideas. Then it turned into stackius, a site for forkable chatrooms. Now though, stackius is casual project management.
+Originally an idea sharing site, named ideaius. It has since transformed into a poorly named project management site, named stackius.
 
 ## MVP
 
  * Ability to post messages to a topic
  * Ability to select messages and create a new topic with the selected messages
- * Ability to post links to images and have them show up inline
+ * Ability to annotate discussions
+ * Search
 
 ## Data design
 
@@ -14,6 +15,7 @@ This is going to be incredibly read heavy. Data design might be similar to Twitt
 
   * Write once objects
     * Messages - text, user who posted them, timestamps, unique id
+    * Annotations
   * Update on occasion
     * Users - username, timestamps, password, email
     * topics - private, name, owner, other meta

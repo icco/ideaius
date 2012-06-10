@@ -1,5 +1,5 @@
 class Telephone < ActiveRecord::Migration
-  def change
+  def up
     alter_table :users do |t|
       t.string :telephone
     end

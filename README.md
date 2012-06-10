@@ -48,4 +48,6 @@ This is going to be incredibly read heavy. Data design might be similar to Twitt
  * posting via email, txt, mobile app
  * daily email of new posts in default (or maybe threads you're following?)
 
+## History
 
+In [2008](https://github.com/icco/ideaius/commit/ad7f82098ec408e67b26fd405dd5dda294b64c1b), I coded up a little site called wikidea. The site grew a little and became ideaius. I pitched it to a commitee at school and was given $100, which I never cashed. I then also stopped working on the project except for small things here and there. Near the end of 2011, [I picked it back up](https://github.com/icco/ideaius/commit/da9c4a4ccdcd6744d3eeb8d0817e5c062a30a936). I switched from PHP to Ruby and created a simple site. After long discussions with @dmpatierno, I changed the name to Stackius and started working on something closer to chat, and further away from a wiki.

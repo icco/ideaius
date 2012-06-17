@@ -11,7 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120604085133) do
+ActiveRecord::Schema.define(:version => 20120617111658) do
+
+  create_table "annotations", :force => true do |t|
+    t.text     "text"
+    t.integer  "user_id"
+    t.integer  "message_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "messages", :force => true do |t|
     t.text     "text"

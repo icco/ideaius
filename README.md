@@ -29,7 +29,6 @@ This is going to be incredibly read heavy. Data design might be similar to Twitt
 
  * <https://devcenter.heroku.com/articles/statsmix>
  * focus more on topic discussion? Thought organization?
- * Switch to Sets? Or did I do that already?
  * better dragging UI
  * posting via email, txt, mobile app
  * daily email of new posts in default (or maybe threads you're following?)

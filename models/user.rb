@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
     more_topics = Topic.find_by_message_ids(msg_ids)
 
     # Union the two together
-    return topics | more_topics
+    return (topics | more_topics).delete_if {|i| i.nil? }
   end
 
   def to_s

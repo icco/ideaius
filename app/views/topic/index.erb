@@ -11,15 +11,7 @@
   <div class="well span7">
     <table class="table table-condensed" id="messages">
       <% @topic.messages.each do |msg| %>
-        <tr>
-          <td class="message" data-id="<%= msg.id %>">
-            <img src="<%= gravatar msg.user.email %>" title="<%= msg.user %>" alt="<%= msg.user %>'s gravatar" class="gravatar" />
-            <span class="message-text"><%= msg.text %></span>
-            <div class="message-meta">
-              <span class="label"> <%= msg.created_at.strftime('%T') %> <%= msg.created_at.strftime('%D') %> </span>
-            </div>
-          </td>
-        </tr>
+        <%= partial "topic/message", :locals => { :msg => msg } %>
       <% end %>
     </table>
 

@@ -15,7 +15,7 @@
       <% end %>
     </table>
 
-    <% form_tag url(:message, :new), :method => 'post', :class => "form-inline" do %>
+    <% form_tag url(:message, :new), :id => "post-submit", :method => 'post', :class => "form-inline" do %>
       <p>
       <%= flash_tag :notice %>
       </p>
@@ -42,6 +42,22 @@
 
 <script>
   $(function() {
+    // TODO(icco): Add a timer to keep checking for messages.
+
+    // Submit handle to async submit
+    $("#post-submit").submit(function (ev) {
+      ev.stopPropagation();
+      ev.preventDefault();
+
+      var data = {
+        topic_id : ev.currentTarget[0].value,
+        text     : ev.currentTarget[1].value
+      };
+
+      console.log(data);
+    });
+
+    // The ability to drag messages.
     $(".message").draggable({
       cursor: "move",
       cursorAt: { top: 50, right: 10 },
@@ -50,6 +66,7 @@
       revert: "invalid",
     });
 
+    // Creates places to drag to.
     $("li.topic").droppable({
       activeClass: "active",
       hoverClass:  "hover",

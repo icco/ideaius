@@ -20,7 +20,11 @@ Stackius.helpers do
   end
 
   def gravatar email
-    url = Gravatar.new(email).image_url
+    options = {
+      #:default => '/images/default_gravatar.png'
+      :default => :identicon
+    }
+    url = Gravatar.new(email).image_url(options)
     return url
   end
 end

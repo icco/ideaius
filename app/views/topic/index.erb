@@ -54,7 +54,15 @@
         text     : ev.currentTarget[1].value
       };
 
-      console.log(data);
+      // Not sure the best place to do this...
+      ev.currentTarget[1].value = "";
+
+      $.post('/message/add.json', data, function(ret_data) {
+        var ret = jQuery.parseJSON(ret_data);
+        if (ret.status != "success") {
+          console.log("FAILURE!");
+        }
+      });
     });
 
     // The ability to drag messages.
@@ -94,7 +102,7 @@
         console.log("Adding " + message_id + " to " + data.topic);
 
         // http://api.jquery.com/jQuery.post/
-        $.post('/topic/add_msg.json', data, function(ret_data) {
+        $.post('/topic/copy_msg.json', data, function(ret_data) {
           console.log(ret_data);
         });
       }

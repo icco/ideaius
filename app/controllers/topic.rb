@@ -29,7 +29,7 @@ Stackius.controllers :topic do
   end
 
   # TODO(icco): add post parameter validation.
-  post :'add_msg.json' do
+  post :'copy_msg.json' do
     @user = logged_in!
 
     user = User.where(:username => params["topic"]["user"]).first

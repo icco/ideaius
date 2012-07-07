@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/padrino/padrino-framework.git
-  revision: 798774602f9f0cd6e6cb06c9e13f87eb555f236e
+  revision: c11de54f346b8d2c400155239559479a842bf8be
   specs:
     padrino (0.10.7)
       padrino-admin (= 0.10.7)
@@ -56,8 +56,8 @@ GEM
       multipart-post (~> 1.1)
     gravatar-ultimate (1.0.3)
     hashie (1.2.0)
-    heroku (2.28.8)
-      heroku-api (~> 0.2.6)
+    heroku (2.28.10)
+      heroku-api (~> 0.2.7)
       launchy (>= 0.3.2)
       netrc (~> 0.7.5)
       rest-client (~> 1.6.1)
@@ -95,10 +95,10 @@ GEM
     omniauth (1.1.0)
       hashie (~> 1.2)
       rack
-    omniauth-github (1.0.1)
+    omniauth-github (1.0.2)
       omniauth (~> 1.0)
-      omniauth-oauth2 (~> 1.0)
-    omniauth-oauth2 (1.0.3)
+      omniauth-oauth2 (~> 1.1)
+    omniauth-oauth2 (1.1.0)
       oauth2 (~> 0.8.0)
       omniauth (~> 1.0)
     pg (0.14.0)

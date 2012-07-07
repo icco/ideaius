@@ -5,7 +5,8 @@ PadrinoTasks.init
 
 desc "Run a local server."
 task :local do
-  Bundler.clean_exec("shotgun -p 4567 -s thin")
+  #Kernel.exec("redis-server /usr/local/etc/redis.conf &")
+  Kernel.exec("shotgun -p 4567 -s thin")
 end
 
 task :default do

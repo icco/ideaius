@@ -1,6 +1,40 @@
 Stackius.controllers :topic do
   layout :main
 
+  # TODO(icco): Wheee
+  post :messages do
+    @user = logged_in!
+
+    topic_owner = params[:captures][0]
+    topic_name  = params[:captures][1].gsub('/', '')
+
+    # get project page
+    page_user = User.find_by_username(topic_owner)
+    if page_user
+      @topic = Topic.where(:user_id => page_user.id, :name => topic_name).first
+
+      if @topic.nil? and page_user == @user
+        @topic = Topic.new
+        @topic.name = topic_name
+        @topic.user_id = @user.id
+        @topic.private = true
+        @topic.save
+      end
+
+      if @topic
+        data = {}
+        @topic.messages.each do |msg|
+          data[msg.id] = h msg.text
+        end
+
+        content_type 'text/plain'
+        return data.to_json
+      end
+    end
+
+    404
+  end
+
   post :fork do
     @user = logged_in!
 

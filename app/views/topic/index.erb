@@ -42,7 +42,12 @@
 
 <script>
   $(function() {
-    // TODO(icco): Add a timer to keep checking for messages.
+    function updatePoll() {
+      $.get('/topic/', function(data) {
+        console.log(data);  // process results here
+        setTimeout(updatePoll, 5000);
+      });
+    }
 
     // Submit handle to async submit
     $("#post-submit").submit(function (ev) {

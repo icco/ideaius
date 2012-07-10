@@ -1,0 +1,17 @@
+<div class="page-header">
+  <p>
+  <h1>
+    <a href="/hash/<%= @hash %>"><%= @hash %></a>
+  </h1>
+  </p>
+</div>
+
+<div class="row">
+  <div class="well span7">
+    <table class="table table-condensed" id="messages">
+      <% @messages.each do |msg| %>
+        <%= partial "topic/message", :locals => { :msg => msg } %>
+      <% end %>
+    </table>
+  </div>
+</div>

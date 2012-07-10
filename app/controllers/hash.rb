@@ -3,7 +3,7 @@ Stackius.controllers :hash do
     404
   end
 
-  get '/:string' do
+  get :index, :with => :string do
     @messages = Message.where("text LIKE '%##{params[:string]}%'")
 
     return render "hash/index", :locals => { }

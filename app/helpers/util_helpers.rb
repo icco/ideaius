@@ -39,6 +39,9 @@ Stackius.helpers do
     # Link Twitter Handles
     out = out.gsub(/@(\w+)/) {|a| "<a href=\"http://twitter.com/#{a[1..-1]}\"/>#{a}</a>" }
 
+    # Link Hash tags
+    out = out.gsub(/#(\w+)/) {|hash| link_to hash, url(:hash, :index, hash[1..-1]) }
+
     return out
   end
 end

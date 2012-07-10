@@ -43,11 +43,13 @@
 <script>
   $(function() {
     function updatePoll() {
-      $.get('/topic/', function(data) {
-        console.log(data);  // process results here
-        setTimeout(updatePoll, 5000);
+      $.post('/topic/messages.json', { 'topic_id': $('#topic_id').text() }, function(ret_data) {
+        var data = $.parseJSON(ret_data);
+        $('#messages').html(data.join(''));
+        setTimeout(updatePoll, 10000);
       });
     }
+    updatePoll();
 
     // Submit handle to async submit
     $("#post-submit").submit(function (ev) {
@@ -114,3 +116,5 @@
     });
   });
 </script>
+
+<div id="topic_id" style="display: none;"><%= @topic.id %></div>

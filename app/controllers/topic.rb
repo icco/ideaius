@@ -2,37 +2,22 @@ Stackius.controllers :topic do
   layout :main
 
   # TODO(icco): Wheee
-  post :messages do
+  post :'messages.json' do
     @user = logged_in!
 
-    topic_owner = params[:captures][0]
-    topic_name  = params[:captures][1].gsub('/', '')
+    @topic = Topic.where(:id => params[:topic_id]).first
 
-    # get project page
-    page_user = User.find_by_username(topic_owner)
-    if page_user
-      @topic = Topic.where(:user_id => page_user.id, :name => topic_name).first
-
-      if @topic.nil? and page_user == @user
-        @topic = Topic.new
-        @topic.name = topic_name
-        @topic.user_id = @user.id
-        @topic.private = true
-        @topic.save
+    if @topic
+      data = []
+      @topic.messages.each do |msg|
+        data[msg.id] =  partial "topic/message", :locals => { :msg => msg }
       end
 
-      if @topic
-        data = {}
-        @topic.messages.each do |msg|
-          data[msg.id] = h msg.text
-        end
-
-        content_type 'text/plain'
-        return data.to_json
-      end
+      content_type 'text/plain'
+      return data.to_json
+    else
+      404
     end
-
-    404
   end
 
   post :fork do

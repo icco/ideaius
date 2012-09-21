@@ -32,6 +32,7 @@ This is going to be incredibly read heavy. Data design might be similar to Twitt
  * better dragging UI
  * posting via email, txt, mobile app
  * daily email of new posts in default (or maybe threads you're following?)
+ * testing. Look at what was started over at [braindump](http://github.com/icco/brainbump)
 
 ## History
 
